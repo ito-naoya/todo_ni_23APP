@@ -44,7 +44,9 @@ public class TodoDao {
 			return todoRecordList;
 
 		} catch (SQLException e) {
+			
 			throw new RuntimeException(e);
+			
 		}
 	}
 
@@ -78,7 +80,9 @@ public class TodoDao {
 			return todoRecordList;
 
 		} catch (SQLException e) {
+			
 			throw new RuntimeException(e);
+			
 		}
 	}
 
@@ -112,7 +116,9 @@ public class TodoDao {
 			return todoRecordList;
 
 		} catch (SQLException e) {
+			
 			throw new RuntimeException(e);
+			
 		}
 	}
 
@@ -146,7 +152,9 @@ public class TodoDao {
 			return todoRecordList;
 
 		} catch (SQLException e) {
+			
 			throw new RuntimeException(e);
+			
 		}
 	}
 
@@ -180,7 +188,9 @@ public class TodoDao {
 			return todoRecordList;
 
 		} catch (SQLException e) {
+			
 			throw new RuntimeException(e);
+			
 		}
 
 	}
@@ -215,7 +225,9 @@ public class TodoDao {
 			return todoRecordList;
 
 		} catch (SQLException e) {
+			
 			throw new RuntimeException(e);
+			
 		}
 
 	}
@@ -251,7 +263,9 @@ public class TodoDao {
 			return record;
 
 		} catch (SQLException e) {
+			
 			throw new RuntimeException(e);
+			
 		}
 	}
 
@@ -272,7 +286,9 @@ public class TodoDao {
 			return statement.executeUpdate();
 
 		} catch (SQLException e) {
+			
 			throw new RuntimeException(e);
+			
 		}
 	}
 
@@ -298,7 +314,9 @@ public class TodoDao {
 			return statement.executeUpdate();
 
 		} catch (SQLException e) {
+			
 			throw new RuntimeException(e);
+			
 		}
 	}
 
@@ -325,7 +343,9 @@ public class TodoDao {
 			return statement.executeUpdate();
 
 		} catch (SQLException e) {
+			
 			throw new RuntimeException(e);
+			
 		}
 	}
 }

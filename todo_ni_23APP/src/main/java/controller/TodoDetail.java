@@ -20,19 +20,24 @@ public class TodoDetail extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		try {
 
-		//選択されたTODOのIDを取得
-		int id = Integer.parseInt(request.getParameter("id"));
+			//選択されたTODOのIDを取得
+			int id = Integer.parseInt(request.getParameter("id"));
 
-		TodoModel todoModel = new TodoModel();
+			TodoModel todoModel = new TodoModel();
 
-		request.setAttribute("record", todoModel.find(id));
+			request.setAttribute("record", todoModel.find(id));
 
+		} catch (Exception e) {
+
+			request.setAttribute("message", "Exception:" + e.getMessage());
+		}
+		
 		String view = "/WEB-INF/views/detail.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
 		dispatcher.forward(request, response);
 
 	}
-
 
 }
