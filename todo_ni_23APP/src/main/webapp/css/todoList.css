@@ -4,20 +4,19 @@ h2 {
 	margin-bottom: 0;
 }
 
-.todoDateTime {
-	color: green;
+.todoHeader{
+	margin: 0;
 }
 
-
-.todoPriority {
-	color: black;
+.todoDateTime {
+	color: green;
 }
 
 .todoList {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	margin-top: 100px;
+	margin-top: 80px;
 }
 
 .todoOption {
