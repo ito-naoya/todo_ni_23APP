@@ -12,9 +12,11 @@
 <body>
 
 	<div class="todoList">
+	
 		<%
 		ArrayList<TodoRecord> todoRecordList = (ArrayList<TodoRecord>) request.getAttribute("todoRecordList");
 		%>
+		
 		<table class="todoTable">
 			<thead>
 				<tr>
@@ -24,16 +26,18 @@
 				</tr>
 			</thead>
 			<tbody>
+			
 				<%
 				for (TodoRecord record : todoRecordList) {
 				%>
+				
 				<tr>
-
 					<td class="todoDateTime"><%=record.getDateTime()%></td>
 					<td class="todoText"><a
 						href="todoDetail?id=<%=record.getId()%>"><%=record.getTitle()%></a></td>
 					<td class="todoPriority"><%=record.getPriority()%></td>
 				</tr>
+				
 				<%
 				}
 				%>
@@ -46,11 +50,11 @@
 		</div>
 
 		<div class="sortOption">
-			<form action="descTodoList" method="GET">
+			<form action="dateTimeAscList" method="GET">
 				<button class="sortBtn">新しい日付順に並べ替え</button>
 			</form>
 
-			<form action="ascTodoList" method="GET">
+			<form action="dateTimeDescList" method="GET">
 				<button class="sortBtn">古い日付順に並べ替え</button>
 			</form>
 

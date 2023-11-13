@@ -14,6 +14,7 @@
 	<%
 	TodoRecord record = (TodoRecord) request.getAttribute("record");
 	%>
+	
 	<%
 	String[] todoPriority = { "high", "normal", "low" };
 	%>
