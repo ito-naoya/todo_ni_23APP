@@ -10,11 +10,11 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.TodoModel;
 
-@WebServlet("/descTodoList")
-public class DescTodoList extends HttpServlet {
+@WebServlet("/dateTimeDescList")
+public class DateTimeDescList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public DescTodoList() {
+	public DateTimeDescList() {
 		super();
 	}
 
