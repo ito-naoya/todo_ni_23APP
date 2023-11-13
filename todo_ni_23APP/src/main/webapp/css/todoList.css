@@ -1,0 +1,54 @@
+@charset "UTF-8";
+
+h2 {
+	margin-bottom: 0;
+}
+
+.todoDateTime {
+	color: green;
+}
+
+
+.todoPriority {
+	color: black;
+}
+
+.todoList {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 100px;
+}
+
+.todoOption {
+	margin-top: 20px;
+	display: flex;
+	justify-content: center;
+	width: 300px;
+}
+
+.todoNew {
+	background-color: limegreen;
+	color: white;
+	border: solid 1px;
+	border-radius: 10px;
+	margin-bottom: 20px;
+	cursor: pointer;
+}
+
+
+.todoTable {
+	text-align: center;
+}
+
+.sortOption {
+	display: flex;
+}
+
+.sortBtn {
+	background-color: orange;
+	color: white;
+	border: solid 1px;
+	border-radius: 10px;
+	cursor: pointer;
+}

@@ -1,0 +1,38 @@
+@charset "UTF-8";
+
+
+ul {
+	list-style: none;
+	padding: 0;
+}
+
+.todoTitleDiv,
+.todoContentDiv,
+.todoDateTimeDiv,
+.todoPriorityDiv {
+	margin-top: 20px;
+}
+
+
+.todoTitleLabel,
+.todoContentLabel,
+.todoDateTimeSpan,
+.todoPrioritySpan {
+	color: red;
+}
+
+.returnBtn {
+	display: inline-block;
+	margin-top: 20px;
+}
+
+.todoUpdate {
+	display: inline-block;
+	margin-top: 20px;
+	background-color: dodgerblue;
+	color: white;
+	border: solid 1px;
+	border-radius: 10px;
+	cursor: pointer;
+	
+}
