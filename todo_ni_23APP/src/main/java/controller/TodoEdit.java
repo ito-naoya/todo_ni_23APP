@@ -19,21 +19,14 @@ public class TodoEdit extends HttpServlet {
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-
 			throws ServletException, IOException {
-		try {
 
-			int id = Integer.parseInt(request.getParameter("id"));
+		int id = Integer.parseInt(request.getParameter("id"));
 
-			TodoModel todoModel = new TodoModel();
+		TodoModel todoModel = new TodoModel();
 
-			request.setAttribute("record", todoModel.find(id));
+		request.setAttribute("record", todoModel.find(id));
 
-		} catch (Exception e) {
-
-			request.setAttribute("message", "Exception:" + e.getMessage());
-		}
-		
 		String view = "/WEB-INF/views/edit.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
 		dispatcher.forward(request, response);

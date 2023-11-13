@@ -19,19 +19,11 @@ public class SortNormalTodoList extends HttpServlet {
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-
 			throws ServletException, IOException {
 
-		try {
+		TodoModel todoModel = new TodoModel();
 
-			TodoModel todoModel = new TodoModel();
-
-			request.setAttribute("todoRecordList", todoModel.sortNormal());
-
-		} catch (Exception e) {
-
-			request.setAttribute("message", "Exception:" + e.getMessage());
-		}
+		request.setAttribute("todoRecordList", todoModel.sortNormal());
 
 		String view = "/WEB-INF/views/list.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(view);

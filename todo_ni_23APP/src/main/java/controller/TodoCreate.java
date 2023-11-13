@@ -20,23 +20,17 @@ public class TodoCreate extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		try {
 
-			String title = request.getParameter("title");
-			String content = request.getParameter("content");
-			String priority = request.getParameter("priority");
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
+		String priority = request.getParameter("priority");
 
-			TodoModel todoModel = new TodoModel();
+		TodoModel todoModel = new TodoModel();
 
-			int createNum = todoModel.insert(title, priority, content);
+		int createNum = todoModel.insert(title, priority, content);
 
-			request.setAttribute("createMessage", createNum + "件のデータを追加しました。");
-			
-		} catch (Exception e) {
+		request.setAttribute("createMessage", createNum + "件のデータを追加しました。");
 
-			request.setAttribute("message", "Exception:" + e.getMessage());
-		}
-		
 		String view = "/WEB-INF/views/create.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
 		dispatcher.forward(request, response);
