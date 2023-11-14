@@ -26,15 +26,19 @@ public class TodoListController extends HttpServlet {
 		TodoModel todoModel = new TodoModel();
 
 		if (sort == null) {
+			
 			request.setAttribute("todoList", todoModel.selectAll());
 
 		} else if (sort != null && sort.equals("asc") || sort.equals("desc")) {
+			
 			request.setAttribute("todoList", todoModel.orderByDateTime(sort));
 
 		} else if (sort != null && sort.equals("high") || sort.equals("normal") || sort.equals("low")) {
+			
 			request.setAttribute("todoList", todoModel.sortByPriority(sort));
 
 		} else {
+			
 			request.setAttribute("todoList", todoModel.selectAll());
 		}
 
