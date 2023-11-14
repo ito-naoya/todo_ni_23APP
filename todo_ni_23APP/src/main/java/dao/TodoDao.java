@@ -112,7 +112,7 @@ public class TodoDao {
 		}
 	}
 
-	public int insert(Todo todoRecord) {
+	public int insert(Todo todo) {
 
 		try {
 			Class.forName(jdbcDriver);
@@ -125,10 +125,10 @@ public class TodoDao {
 		try (Connection connection = DriverManager.getConnection(url, user, password);
 				PreparedStatement statement = connection.prepareStatement(sql);) {
 
-			statement.setString(1, todoRecord.getTitle());
-			statement.setString(2, todoRecord.getDateTime());
-			statement.setString(3, todoRecord.getPriority());
-			statement.setString(4, todoRecord.getContent());
+			statement.setString(1, todo.getTitle());
+			statement.setString(2, todo.getDateTime());
+			statement.setString(3, todo.getPriority());
+			statement.setString(4, todo.getContent());
 
 			return statement.executeUpdate();
 
@@ -139,7 +139,7 @@ public class TodoDao {
 		}
 	}
 
-	public int update(Todo todoRecord) {
+	public int update(Todo todo) {
 
 		try {
 			Class.forName(jdbcDriver);
@@ -152,11 +152,11 @@ public class TodoDao {
 		try (Connection connection = DriverManager.getConnection(url, user, password);
 				PreparedStatement statement = connection.prepareStatement(sql);) {
 
-			statement.setString(1, todoRecord.getTitle());
-			statement.setString(2, todoRecord.getDateTime());
-			statement.setString(3, todoRecord.getPriority());
-			statement.setString(4, todoRecord.getContent());
-			statement.setInt(5, todoRecord.getId());
+			statement.setString(1, todo.getTitle());
+			statement.setString(2, todo.getDateTime());
+			statement.setString(3, todo.getPriority());
+			statement.setString(4, todo.getContent());
+			statement.setInt(5, todo.getId());
 
 			return statement.executeUpdate();
 

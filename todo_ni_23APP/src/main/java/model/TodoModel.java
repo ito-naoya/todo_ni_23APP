@@ -21,22 +21,22 @@ public class TodoModel {
 	public int insert(String title, String priority, String content) {
 		
 		String nowDateTime = getNowDate();
-		Todo todoRecord = new Todo(title, nowDateTime, priority, content);
+		Todo todo = new Todo(title, nowDateTime, priority, content);
 		
-		return todoDao.insert(todoRecord);
+		return todoDao.insert(todo);
 	}
 	
 	public int update(int id, String title, String priority, String content) {
 		
-		Todo todoRecord = todoDao.select(id);
+		Todo todo = todoDao.select(id);
 		String nowDate = getNowDate();
 		
-		todoRecord.setTitle(title);
-		todoRecord.setDateTime(nowDate);
-		todoRecord.setPriority(priority);
-		todoRecord.setContent(content);
+		todo.setTitle(title);
+		todo.setDateTime(nowDate);
+		todo.setPriority(priority);
+		todo.setContent(content);
 		
-		return todoDao.update(todoRecord);
+		return todoDao.update(todo);
 		
 	}
 
