@@ -36,7 +36,7 @@
 		</div>
 
 		<div class="todoDateTimeDiv">
-			<span class="todoDateTimeSpan">更新日</span> <br> <span><%=todo.getDateTime()%></span>
+			<span class="todoDateTimeSpan">最終更新日</span> <br> <span><%=todo.getDateTime()%></span>
 		</div>
 
 
