@@ -174,10 +174,7 @@ public class TodoDao {
 			e.printStackTrace();
 		}
 
-		String sql = "";
-
-		if (sort != null && sort != "")
-			sql = "SELECT * FROM todos ORDER BY dateTime " + sort;
+		String sql = "SELECT * FROM todos ORDER BY dateTime " + sort;
 
 		try (Connection connection = DriverManager.getConnection(url, user, password);
 				PreparedStatement statement = connection.prepareStatement(sql);
