@@ -30,7 +30,7 @@ public class TodoDao {
 				PreparedStatement statement = connection.prepareStatement(sql);
 				ResultSet results = statement.executeQuery()) {
 
-			ArrayList<Todo> todoRecordList = new ArrayList<Todo>();
+			ArrayList<Todo> todoList = new ArrayList<Todo>();
 
 			while (results.next()) {
 
@@ -40,10 +40,10 @@ public class TodoDao {
 				String content = results.getString("content");
 				String priority = results.getString("priority");
 
-				todoRecordList.add(new Todo(id, title, dateTime, priority, content));
+				todoList.add(new Todo(id, title, dateTime, priority, content));
 			}
 
-			return todoRecordList;
+			return todoList;
 
 		} catch (SQLException e) {
 
@@ -180,7 +180,7 @@ public class TodoDao {
 				PreparedStatement statement = connection.prepareStatement(sql);
 				ResultSet results = statement.executeQuery();) {
 
-			ArrayList<Todo> todoRecordList = new ArrayList<Todo>();
+			ArrayList<Todo> todoList = new ArrayList<Todo>();
 
 			while (results.next()) {
 
@@ -190,10 +190,10 @@ public class TodoDao {
 				String content = results.getString("content");
 				String priority = results.getString("priority");
 
-				todoRecordList.add(new Todo(id, title, dateTime, priority, content));
+				todoList.add(new Todo(id, title, dateTime, priority, content));
 			}
 
-			return todoRecordList;
+			return todoList;
 
 		} catch (SQLException e) {
 
@@ -202,7 +202,7 @@ public class TodoDao {
 		}
 	}
 
-	public ArrayList<Todo> sortPriority(String sort) {
+	public ArrayList<Todo> sortByPriority(String sort) {
 
 		try {
 			Class.forName(DB_JDBC_DRIVER);
@@ -216,7 +216,7 @@ public class TodoDao {
 				PreparedStatement statement = connection.prepareStatement(sql);
 				ResultSet results = statement.executeQuery();) {
 
-			ArrayList<Todo> todoRecordList = new ArrayList<Todo>();
+			ArrayList<Todo> todoList = new ArrayList<Todo>();
 
 			while (results.next()) {
 
@@ -226,10 +226,10 @@ public class TodoDao {
 				String content = results.getString("content");
 				String priority = results.getString("priority");
 
-				todoRecordList.add(new Todo(id, title, dateTime, priority, content));
+				todoList.add(new Todo(id, title, dateTime, priority, content));
 			}
 
-			return todoRecordList;
+			return todoList;
 
 		} catch (SQLException e) {
 

@@ -54,8 +54,8 @@ public class TodoModel {
 		return todoDao.orderByDateTime(sort);
 	}
 
-	public ArrayList<Todo> sortPriority(String sort) {
-		return todoDao.sortPriority(sort);
+	public ArrayList<Todo> sortByPriority(String sort) {
+		return todoDao.sortByPriority(sort);
 	}
 
 }
