@@ -40,6 +40,7 @@ public class TodoListController extends HttpServlet {
 		} else {
 			
 			request.setAttribute("todoList", todoModel.selectAll());
+			
 		}
 
 		String view = "/WEB-INF/views/todoListView.jsp";
