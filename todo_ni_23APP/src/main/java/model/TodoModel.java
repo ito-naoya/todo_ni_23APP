@@ -4,77 +4,72 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-import model.dao.TodoDao;
-import model.dto.TodoRecord;
+import dao.TodoDao;
 
 public class TodoModel {
 
 	TodoDao todoDao = new TodoDao();
 
-	public ArrayList<TodoRecord> findAll() {
-		return todoDao.findAll();
+	public ArrayList<Todo> selectAll() {
+		return todoDao.selectAll();
 	}
-
-	public ArrayList<TodoRecord> sortAsc() {
-		return todoDao.sortAsc();
+	
+	public Todo select(int id) {
+		return todoDao.select(id);
 	}
-
-	public ArrayList<TodoRecord> sortDesc() {
-		return todoDao.sortDesc();
+	
+	public int insert(String title, String priority, String content) {
+		
+		String nowDateTime = getNowDate();
+		Todo todoRecord = new Todo(title, nowDateTime, priority, content);
+		
+		return todoDao.insert(todoRecord);
 	}
-
-	public ArrayList<TodoRecord> sortHigh() {
-		return todoDao.sortHigh();
-	}
-
-	public ArrayList<TodoRecord> sortNormal() {
-		return todoDao.sortNormal();
-	}
-
-	public ArrayList<TodoRecord> sortLow() {
-		return todoDao.sortLow();
-	}
-
-	public TodoRecord find(int targetId) {
-		return todoDao.find(targetId);
+	
+	public int update(int id, String title, String priority, String content) {
+		
+		Todo todoRecord = todoDao.select(id);
+		String nowDate = getNowDate();
+		
+		todoRecord.setTitle(title);
+		todoRecord.setDateTime(nowDate);
+		todoRecord.setPriority(priority);
+		todoRecord.setContent(content);
+		
+		return todoDao.update(todoRecord);
+		
 	}
 
 	public int delete(int id) {
 		return todoDao.delete(id);
 	}
+	
+	public ArrayList<Todo> sortAsc() {
+		return todoDao.sortAsc();
+	}
+
+	public ArrayList<Todo> sortDesc() {
+		return todoDao.sortDesc();
+	}
+
+	public ArrayList<Todo> sortHigh() {
+		return todoDao.sortHigh();
+	}
+
+	public ArrayList<Todo> sortNormal() {
+		return todoDao.sortNormal();
+	}
+
+	public ArrayList<Todo> sortLow() {
+		return todoDao.sortLow();
+	}
 
 	public static String getNowDate() {
-		Date nowDate = new Date();
+		Date nowDateTime = new Date();
 		SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy年MM月dd日");
-		String formatNowDate = sdf2.format(nowDate);
+		String formatNowDate = sdf2.format(nowDateTime);
 		return formatNowDate;
 	}
 
-	public int insert(String title, String priority, String content) {
-
-		TodoRecord todoRecord = new TodoRecord();
-		String nowDate = getNowDate();
-
-		todoRecord.setTitle(title);
-		todoRecord.setDateTime(nowDate);
-		todoRecord.setPriority(priority);
-		todoRecord.setContent(content);
-
-		return todoDao.insert(todoRecord);
-	}
-
-	public int update(int todoId, String title, String priority, String content) {
-
-		TodoRecord todoRecord = todoDao.find(todoId);
-		String nowDate = getNowDate();
-
-		todoRecord.setTitle(title);
-		todoRecord.setDateTime(nowDate);
-		todoRecord.setPriority(priority);
-		todoRecord.setContent(content);
-
-		return todoDao.update(todoRecord);
-
-	}
 
 }
