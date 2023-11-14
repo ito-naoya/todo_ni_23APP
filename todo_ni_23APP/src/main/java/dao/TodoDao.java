@@ -89,29 +89,6 @@ public class TodoDao {
 		}
 	}
 
-	public int delete(int id) {
-
-		try {
-			Class.forName(jdbcDriver);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		String sql = "DELETE FROM todos WHERE id = ?";
-
-		try (Connection connection = DriverManager.getConnection(url, user, password);
-				PreparedStatement statement = connection.prepareStatement(sql);) {
-
-			statement.setInt(1, id);
-			return statement.executeUpdate();
-
-		} catch (SQLException e) {
-
-			throw new RuntimeException(e);
-
-		}
-	}
-
 	public int insert(Todo todo) {
 
 		try {
@@ -158,6 +135,29 @@ public class TodoDao {
 			statement.setString(4, todo.getContent());
 			statement.setInt(5, todo.getId());
 
+			return statement.executeUpdate();
+
+		} catch (SQLException e) {
+
+			throw new RuntimeException(e);
+
+		}
+	}
+
+	public int delete(int id) {
+
+		try {
+			Class.forName(jdbcDriver);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		String sql = "DELETE FROM todos WHERE id = ?";
+
+		try (Connection connection = DriverManager.getConnection(url, user, password);
+				PreparedStatement statement = connection.prepareStatement(sql);) {
+
+			statement.setInt(1, id);
 			return statement.executeUpdate();
 
 		} catch (SQLException e) {
