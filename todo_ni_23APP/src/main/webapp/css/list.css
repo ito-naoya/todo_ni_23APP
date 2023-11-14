@@ -19,14 +19,14 @@ h2 {
 	margin-top: 80px;
 }
 
-.todoOption {
+.newTodo {
 	margin-top: 20px;
 	display: flex;
 	justify-content: center;
 	width: 300px;
 }
 
-.todoNew {
+.newBtn {
 	background-color: limegreen;
 	color: white;
 	border: solid 1px;
@@ -45,7 +45,7 @@ h2 {
 }
 
 .sortBtn {
-	background-color: orange;
+	background-color: rgb(255, 43, 226);
 	color: white;
 	border: solid 1px;
 	border-radius: 10px;
