@@ -11,22 +11,22 @@ import model.Todo;
 
 public class TodoDao {
 
-	public static final String url = "jdbc:mysql://localhost/todo";
-	public static final String user = "root";
-	public static final String password = "";
-	public static final String jdbcDriver = "com.mysql.jdbc.Driver";
+	public static final String DB_URL = "jdbc:mysql://localhost/todo";
+	public static final String DB_USER = "root";
+	public static final String DB_PASSWORD = "";
+	public static final String DB_JDBC_DRIVER = "com.mysql.jdbc.Driver";
 
 	public ArrayList<Todo> selectAll() {
 
 		try {
-			Class.forName(jdbcDriver);
+			Class.forName(DB_JDBC_DRIVER);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
 		String sql = "SELECT * FROM todos";
 
-		try (Connection connection = DriverManager.getConnection(url, user, password);
+		try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
 				PreparedStatement statement = connection.prepareStatement(sql);
 				ResultSet results = statement.executeQuery()) {
 
@@ -55,14 +55,14 @@ public class TodoDao {
 	public Todo select(int id) {
 
 		try {
-			Class.forName(jdbcDriver);
+			Class.forName(DB_JDBC_DRIVER);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
 		String sql = "SELECT * FROM todos WHERE id = ?";
 
-		try (Connection connection = DriverManager.getConnection(url, user, password);
+		try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
 				PreparedStatement statement = connection.prepareStatement(sql);) {
 
 			statement.setInt(1, id);
@@ -91,14 +91,14 @@ public class TodoDao {
 	public int insert(Todo todo) {
 
 		try {
-			Class.forName(jdbcDriver);
+			Class.forName(DB_JDBC_DRIVER);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
 		String sql = "INSERT INTO todos (title, dateTime, priority, content) VALUES(?, ?, ?, ?)";
 
-		try (Connection connection = DriverManager.getConnection(url, user, password);
+		try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
 				PreparedStatement statement = connection.prepareStatement(sql);) {
 
 			statement.setString(1, todo.getTitle());
@@ -118,14 +118,14 @@ public class TodoDao {
 	public int update(Todo todo) {
 
 		try {
-			Class.forName(jdbcDriver);
+			Class.forName(DB_JDBC_DRIVER);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
 		String sql = "UPDATE todos SET title = ?, dateTime = ?, priority = ?, content = ? WHERE id = ?";
 
-		try (Connection connection = DriverManager.getConnection(url, user, password);
+		try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
 				PreparedStatement statement = connection.prepareStatement(sql);) {
 
 			statement.setString(1, todo.getTitle());
@@ -146,14 +146,14 @@ public class TodoDao {
 	public int delete(int id) {
 
 		try {
-			Class.forName(jdbcDriver);
+			Class.forName(DB_JDBC_DRIVER);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
 		String sql = "DELETE FROM todos WHERE id = ?";
 
-		try (Connection connection = DriverManager.getConnection(url, user, password);
+		try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
 				PreparedStatement statement = connection.prepareStatement(sql);) {
 
 			statement.setInt(1, id);
@@ -169,14 +169,14 @@ public class TodoDao {
 	public ArrayList<Todo> orderByDateTime(String sort) {
 
 		try {
-			Class.forName(jdbcDriver);
+			Class.forName(DB_JDBC_DRIVER);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
 		String sql = "SELECT * FROM todos ORDER BY dateTime " + sort;
 
-		try (Connection connection = DriverManager.getConnection(url, user, password);
+		try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
 				PreparedStatement statement = connection.prepareStatement(sql);
 				ResultSet results = statement.executeQuery();) {
 
@@ -205,14 +205,14 @@ public class TodoDao {
 	public ArrayList<Todo> sortPriority(String sort) {
 
 		try {
-			Class.forName(jdbcDriver);
+			Class.forName(DB_JDBC_DRIVER);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
 		String sql = "SELECT * FROM todos WHERE priority = '" + sort + "'";
 
-		try (Connection connection = DriverManager.getConnection(url, user, password);
+		try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
 				PreparedStatement statement = connection.prepareStatement(sql);
 				ResultSet results = statement.executeQuery();) {
 
