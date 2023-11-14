@@ -9,11 +9,18 @@ import dao.TodoDao;
 public class TodoModel {
 
 	TodoDao todoDao = new TodoDao();
+	
+	private static String getNowDate() {
+		Date nowDateTime = new Date();
+		SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy年MM月dd日");
+		String formatNowDate = sdf2.format(nowDateTime);
+		return formatNowDate;
+	}
 
 	public ArrayList<Todo> selectAll() {
 		return todoDao.selectAll();
 	}
-
+	
 	public Todo select(int id) {
 		return todoDao.select(id);
 	}
@@ -37,7 +44,6 @@ public class TodoModel {
 		todo.setContent(content);
 
 		return todoDao.update(todo);
-
 	}
 
 	public int delete(int id) {
@@ -50,13 +56,6 @@ public class TodoModel {
 
 	public ArrayList<Todo> sortPriority(String sort) {
 		return todoDao.sortPriority(sort);
-	}
-
-	public static String getNowDate() {
-		Date nowDateTime = new Date();
-		SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy年MM月dd日");
-		String formatNowDate = sdf2.format(nowDateTime);
-		return formatNowDate;
 	}
 
 }
