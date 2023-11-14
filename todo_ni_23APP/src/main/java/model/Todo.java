@@ -1,14 +1,15 @@
 package model;
 
-public class Todo{
-	
+public class Todo {
+
 	private int id;
 	private String title;
 	private String dateTime;
 	private String priority;
 	private String content;
-	
-	public Todo() {};
+
+	public Todo() {
+	};
 
 	public Todo(int id, String title, String dateTime, String priority, String content) {
 		this.id = id;
@@ -17,8 +18,8 @@ public class Todo{
 		this.priority = priority;
 		this.content = content;
 	}
-	
-	public Todo( String title, String dateTime, String priority, String content) {
+
+	public Todo(String title, String dateTime, String priority, String content) {
 		this.title = title;
 		this.dateTime = dateTime;
 		this.priority = priority;
