@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>とぅどぅ</title>
-<link rel="stylesheet" href="./css/list.css">
+<link rel="stylesheet" href="./css/todoList.css">
 </head>
 <body>
 
@@ -35,7 +35,7 @@
 
 				<tr>
 					<td class="todoDateTime"><%=todo.getDateTime()%></td>
-					<td class="todoText"><a href="detail?id=<%=todo.getId()%>"><%=todo.getTitle()%></a></td>
+					<td class="todoText"><a href="todoDetail?id=<%=todo.getId()%>"><%=todo.getTitle()%></a></td>
 					<td class="todoPriority"><%=todo.getPriority()%></td>
 				</tr>
 
@@ -47,7 +47,7 @@
 		</table>
 
 		<div class="newTodo">
-			<a href="new"><button class="newBtn">新規登録</button></a>
+			<a href="todoNew"><button class="newBtn">新規登録</button></a>
 		</div>
 
 		<%
@@ -67,7 +67,7 @@
 			<%
 			for (Map.Entry<String, String> entry : sortMap.entrySet()) {
 			%>
-			<form action="list" method="GET">
+			<form action="todoList" method="GET">
 				<button type="submit" class="sortBtn"><%=entry.getValue()%></button>
 				<input type="hidden" value="<%=entry.getKey()%>" name="sort">
 			</form>

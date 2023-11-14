@@ -10,31 +10,31 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.TodoModel;
 
-@WebServlet("/update")
-public class UpdateController extends HttpServlet {
+@WebServlet("/todoCreate")
+public class TodoCreateController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public UpdateController() {
+	public TodoCreateController() {
 		super();
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		int id = Integer.parseInt(request.getParameter("id"));
 		String title = request.getParameter("title");
-		String priority = request.getParameter("priority");
 		String content = request.getParameter("content");
-		
+		String priority = request.getParameter("priority");
+
 		TodoModel todoModel = new TodoModel();
-		
-		int updateNum = todoModel.update(id, title, priority, content);
 
-		request.setAttribute("updateMessage", updateNum + "件のデータを更新しました。");
+		int createNum = todoModel.insert(title, priority, content);
 
-		String view = "/WEB-INF/views/updateView.jsp";
+		request.setAttribute("createMessage", createNum + "件のデータを追加しました。");
+
+		String view = "/WEB-INF/views/todoCreateView.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
 		dispatcher.forward(request, response);
+
 	}
 
 }

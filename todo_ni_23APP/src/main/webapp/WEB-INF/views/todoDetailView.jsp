@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>とぅどぅ</title>
-<link rel="stylesheet" href="./css/detail.css">
+<link rel="stylesheet" href="./css/todoDetail.css">
 </head>
 <body>
 
@@ -26,8 +26,11 @@
 			<li class="todoPriority"><%=todo.getPriority()%></li>
 		</ul>
 
-		<a href="edit?id=<%=todo.getId()%>">編集</a> <a href="list">戻る</a> <a
-			href="delete?id=<%=todo.getId()%>"><button class="deleteBtn">削除</button></a>
+		<a href="todoEdit?id=<%=todo.getId()%>">編集</a> 
+		<a href="todoList">戻る</a>
+		<a href="todoDelete?id=<%=todo.getId()%>">
+			<button class="deleteBtn">削除</button>
+		</a>
 
 	</div>
 

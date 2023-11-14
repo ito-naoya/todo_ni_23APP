@@ -10,24 +10,35 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.TodoModel;
 
-@WebServlet("/edit")
-public class EditController extends HttpServlet {
+@WebServlet("/todoList")
+public class TodoListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public EditController() {
+	public TodoListController() {
 		super();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		int id = Integer.parseInt(request.getParameter("id"));
+		String sort = request.getParameter("sort");
 
 		TodoModel todoModel = new TodoModel();
 
-		request.setAttribute("todo", todoModel.select(id));
+		if (sort == null) {
+			request.setAttribute("todoList", todoModel.selectAll());
 
-		String view = "/WEB-INF/views/editView.jsp";
+		} else if (sort != null && sort.equals("asc") || sort.equals("desc")) {
+			request.setAttribute("todoList", todoModel.orderByDateTime(sort));
+
+		} else if (sort != null && sort.equals("high") || sort.equals("normal") || sort.equals("low")) {
+			request.setAttribute("todoList", todoModel.sortByPriority(sort));
+
+		} else {
+			request.setAttribute("todoList", todoModel.selectAll());
+		}
+
+		String view = "/WEB-INF/views/todoListView.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
 		dispatcher.forward(request, response);
 

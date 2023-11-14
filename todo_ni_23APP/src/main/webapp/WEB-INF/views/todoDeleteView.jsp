@@ -7,16 +7,15 @@
 <head>
 <meta charset="UTF-8">
 <title>とぅどぅ</title>
-<link rel="stylesheet" href="./css/delete.css">
+<link rel="stylesheet" href="./css/todoDelete.css">
 </head>
 <body>
 
 	<h1>削除完了</h1>
 
-	<p><%=request.getAttribute("deleteMessage")%>
-	</p>
+	<p><%=request.getAttribute("deleteMessage")%></p>
 
-	<a href="list">戻る</a>
+	<a href="todoList">戻る</a>
 
 </body>
 </html>

@@ -7,21 +7,21 @@
 <head>
 <meta charset="UTF-8">
 <title>とぅどぅ</title>
-<link rel="stylesheet" href="./css/edit.css">
+<link rel="stylesheet" href="./css/todoEdit.css">
 </head>
 <body>
 
 	<%
 	Todo todo = (Todo) request.getAttribute("todo");
 	%>
-	
+
 	<%
 	String[] todoPriority = { "high", "normal", "low" };
 	%>
 
 	<h1>TODO編集</h1>
 
-	<form action="update" method="POST">
+	<form action="todoUpdate" method="POST">
 		<input type="hidden" name="id" value="<%=todo.getId()%>"></input>
 
 		<div class="todoTitleDiv">
@@ -41,31 +41,43 @@
 
 
 		<div class="todoPriorityDiv">
-			<span class="todoPrioritySpan">優先度</span> <br> <select name="priority">
+			<span class="todoPrioritySpan">優先度</span> <br> <select
+				name="priority">
+
 				<%
 				for (String priority : todoPriority) {
 				%>
+
 				<%
 				if (priority.equals(todo.getPriority())) {
 				%>
+
 				<option selected><%=priority%></option>
+
 				<%
 				} else {
 				%>
-				<option>
-					<%=priority%></option>
+
+				<option><%=priority%></option>
+
 				<%
 				}
 				%>
+
 				<%
 				}
-				%> 優先度：<%=todo.getPriority()%><
+				%>
+
+				<p>
+					優先度：<%=todo.getPriority()%>
+				</p>
+				
 			</select>
 		</div>
 		<button type="submit" class="todoUpdate">更新する</button>
 	</form>
 
-	<a href="list" class="returnBtn">戻る</a>
+	<a href="todoList" class="returnBtn">戻る</a>
 
 
 </body>

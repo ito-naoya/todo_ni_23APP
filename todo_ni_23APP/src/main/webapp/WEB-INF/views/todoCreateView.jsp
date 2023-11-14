@@ -7,17 +7,15 @@
 <head>
 <meta charset="UTF-8">
 <title>とぅどぅ</title>
-<link rel="stylesheet" href="./css/update.css">
+<link rel="stylesheet" href="./css/todoCreate.css">
 </head>
 <body>
 
-	<h1>更新完了</h1>
+	<h1>新規登録完了</h1>
 
-	<p><%=request.getAttribute("updateMessage")%>
-	</p>
+	<p><%=request.getAttribute("createMessage")%></p>
 
-	<a href="list">戻る</a>
-
+	<a href="todoList">戻る</a>
 
 </body>
 </html>

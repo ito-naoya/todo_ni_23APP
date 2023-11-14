@@ -10,35 +10,26 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.TodoModel;
 
-@WebServlet("/list")
-public class ListController extends HttpServlet {
+@WebServlet("/todoDelete")
+public class TodoDeleteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public ListController() {
+	public TodoDeleteController() {
 		super();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String sort = request.getParameter("sort");
+		int id = Integer.parseInt(request.getParameter("id"));
 
 		TodoModel todoModel = new TodoModel();
 
-		if (sort == null) {
-			request.setAttribute("todoList", todoModel.selectAll());
+		int deleteNum = todoModel.delete(id);
 
-		} else if (sort != null && sort.equals("asc") || sort.equals("desc")) {
-			request.setAttribute("todoList", todoModel.orderByDateTime(sort));
+		request.setAttribute("deleteMessage", deleteNum + "件のデータを削除しました。");
 
-		} else if (sort != null && sort.equals("high") || sort.equals("normal") || sort.equals("low")) {
-			request.setAttribute("todoList", todoModel.sortByPriority(sort));
-
-		} else {
-			request.setAttribute("todoList", todoModel.selectAll());
-		}
-
-		String view = "/WEB-INF/views/listView.jsp";
+		String view = "/WEB-INF/views/todoDeleteView.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
 		dispatcher.forward(request, response);
 
