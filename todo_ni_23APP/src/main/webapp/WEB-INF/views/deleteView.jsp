@@ -18,6 +18,5 @@
 
 	<a href="list">戻る</a>
 
-
 </body>
 </html>
