@@ -21,33 +21,21 @@ public class ListController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String sortParam = request.getParameter("sortParam");
+		String sort = request.getParameter("sort");
 
 		TodoModel todoModel = new TodoModel();
 
-		if (sortParam == null) {
+		if (sort == null) {
 			request.setAttribute("todoList", todoModel.selectAll());
-		} else if (sortParam != null) {
-			switch (sortParam) {
-			case "asc":
-				request.setAttribute("todoList", todoModel.sortAsc());
-				break;
-			case "desc":
-				request.setAttribute("todoList", todoModel.sortDesc());
-				break;
-			case "high":
-				request.setAttribute("todoList", todoModel.sortHigh());
-				break;
-			case "normal":
-				request.setAttribute("todoList", todoModel.sortNormal());
-				break;
-			case "low":
-				request.setAttribute("todoList", todoModel.sortLow());
-				break;
-			case "all":
-				request.setAttribute("todoList", todoModel.selectAll());
-				break;
-			}
+
+		} else if (sort != null && sort.equals("asc") || sort.equals("desc")) {
+			request.setAttribute("todoList", todoModel.orderByDateTime(sort));
+
+		} else if (sort != null && sort.equals("high") || sort.equals("normal") || sort.equals("low")) {
+			request.setAttribute("todoList", todoModel.sortPriority(sort));
+
+		} else {
+			request.setAttribute("todoList", todoModel.selectAll());
 		}
 
 		String view = "/WEB-INF/views/listView.jsp";

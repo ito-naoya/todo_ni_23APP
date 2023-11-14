@@ -68,19 +68,18 @@ public class TodoDao {
 			statement.setInt(1, id);
 			ResultSet result = statement.executeQuery();
 
-			Todo record = new Todo();
+			Todo todo = new Todo();
 
 			while (result.next()) {
 
-				record.setId(result.getInt("id"));
-				record.setTitle(result.getString("title"));
-				record.setDateTime(result.getString("dateTime"));
-				record.setPriority(result.getString("priority"));
-				record.setContent(result.getString("content"));
-
+				todo.setId(result.getInt("id"));
+				todo.setTitle(result.getString("title"));
+				todo.setDateTime(result.getString("dateTime"));
+				todo.setPriority(result.getString("priority"));
+				todo.setContent(result.getString("content"));
 			}
 
-			return record;
+			return todo;
 
 		} catch (SQLException e) {
 
@@ -167,7 +166,7 @@ public class TodoDao {
 		}
 	}
 
-	public ArrayList<Todo> sortAsc() {
+	public ArrayList<Todo> orderByDateTime(String sort) {
 
 		try {
 			Class.forName(jdbcDriver);
@@ -175,11 +174,14 @@ public class TodoDao {
 			e.printStackTrace();
 		}
 
-		String sql = "SELECT * FROM todos ORDER BY dateTime ASC";
+		String sql = "";
+
+		if (sort != null && sort != "")
+			sql = "SELECT * FROM todos ORDER BY dateTime " + sort;
 
 		try (Connection connection = DriverManager.getConnection(url, user, password);
 				PreparedStatement statement = connection.prepareStatement(sql);
-				ResultSet results = statement.executeQuery()) {
+				ResultSet results = statement.executeQuery();) {
 
 			ArrayList<Todo> todoRecordList = new ArrayList<Todo>();
 
@@ -203,7 +205,7 @@ public class TodoDao {
 		}
 	}
 
-	public ArrayList<Todo> sortDesc() {
+	public ArrayList<Todo> sortPriority(String sort) {
 
 		try {
 			Class.forName(jdbcDriver);
@@ -211,11 +213,11 @@ public class TodoDao {
 			e.printStackTrace();
 		}
 
-		String sql = "SELECT * FROM todos ORDER BY dateTime DESC";
+		String sql = "SELECT * FROM todos WHERE priority = '" + sort + "'";
 
 		try (Connection connection = DriverManager.getConnection(url, user, password);
 				PreparedStatement statement = connection.prepareStatement(sql);
-				ResultSet results = statement.executeQuery()) {
+				ResultSet results = statement.executeQuery();) {
 
 			ArrayList<Todo> todoRecordList = new ArrayList<Todo>();
 
@@ -237,116 +239,6 @@ public class TodoDao {
 			throw new RuntimeException(e);
 
 		}
-	}
-
-	public ArrayList<Todo> sortHigh() {
-
-		try {
-			Class.forName(jdbcDriver);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		String sql = "SELECT * FROM todos WHERE priority = 'high'";
-
-		try (Connection connection = DriverManager.getConnection(url, user, password);
-				PreparedStatement statement = connection.prepareStatement(sql);
-				ResultSet results = statement.executeQuery()) {
-
-			ArrayList<Todo> todoRecordList = new ArrayList<Todo>();
-
-			while (results.next()) {
-
-				int id = results.getInt("id");
-				String title = results.getString("title");
-				String dateTime = results.getString("dateTime");
-				String content = results.getString("content");
-				String priority = results.getString("priority");
-
-				todoRecordList.add(new Todo(id, title, dateTime, priority, content));
-			}
-
-			return todoRecordList;
-
-		} catch (SQLException e) {
-
-			throw new RuntimeException(e);
-
-		}
-	}
-
-	public ArrayList<Todo> sortNormal() {
-
-		try {
-			Class.forName(jdbcDriver);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		String sql = "SELECT * FROM todos WHERE priority = 'normal'";
-
-		try (Connection connection = DriverManager.getConnection(url, user, password);
-				PreparedStatement statement = connection.prepareStatement(sql);
-				ResultSet results = statement.executeQuery()) {
-
-			ArrayList<Todo> todoRecordList = new ArrayList<Todo>();
-
-			while (results.next()) {
-
-				int id = results.getInt("id");
-				String title = results.getString("title");
-				String dateTime = results.getString("dateTime");
-				String content = results.getString("content");
-				String priority = results.getString("priority");
-
-				todoRecordList.add(new Todo(id, title, dateTime, priority, content));
-			}
-
-			return todoRecordList;
-
-		} catch (SQLException e) {
-
-			throw new RuntimeException(e);
-
-		}
-
-	}
-
-	public ArrayList<Todo> sortLow() {
-
-		try {
-			Class.forName(jdbcDriver);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		String sql = "SELECT * FROM todos WHERE priority = 'low'";
-
-		try (Connection connection = DriverManager.getConnection(url, user, password);
-				PreparedStatement statement = connection.prepareStatement(sql);
-				ResultSet results = statement.executeQuery()) {
-
-			ArrayList<Todo> todoRecordList = new ArrayList<Todo>();
-
-			while (results.next()) {
-
-				int id = results.getInt("id");
-				String title = results.getString("title");
-				String dateTime = results.getString("dateTime");
-				String content = results.getString("content");
-				String priority = results.getString("priority");
-
-				todoRecordList.add(new Todo(id, title, dateTime, priority, content));
-			}
-
-			return todoRecordList;
-
-		} catch (SQLException e) {
-
-			throw new RuntimeException(e);
-
-		}
-
 	}
 
 }

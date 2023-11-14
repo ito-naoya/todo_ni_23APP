@@ -13,55 +13,43 @@ public class TodoModel {
 	public ArrayList<Todo> selectAll() {
 		return todoDao.selectAll();
 	}
-	
+
 	public Todo select(int id) {
 		return todoDao.select(id);
 	}
-	
+
 	public int insert(String title, String priority, String content) {
-		
+
 		String nowDateTime = getNowDate();
 		Todo todo = new Todo(title, nowDateTime, priority, content);
-		
+
 		return todoDao.insert(todo);
 	}
-	
+
 	public int update(int id, String title, String priority, String content) {
-		
+
 		Todo todo = todoDao.select(id);
 		String nowDate = getNowDate();
-		
+
 		todo.setTitle(title);
 		todo.setDateTime(nowDate);
 		todo.setPriority(priority);
 		todo.setContent(content);
-		
+
 		return todoDao.update(todo);
-		
+
 	}
 
 	public int delete(int id) {
 		return todoDao.delete(id);
 	}
-	
-	public ArrayList<Todo> sortAsc() {
-		return todoDao.sortAsc();
+
+	public ArrayList<Todo> orderByDateTime(String sort) {
+		return todoDao.orderByDateTime(sort);
 	}
 
-	public ArrayList<Todo> sortDesc() {
-		return todoDao.sortDesc();
-	}
-
-	public ArrayList<Todo> sortHigh() {
-		return todoDao.sortHigh();
-	}
-
-	public ArrayList<Todo> sortNormal() {
-		return todoDao.sortNormal();
-	}
-
-	public ArrayList<Todo> sortLow() {
-		return todoDao.sortLow();
+	public ArrayList<Todo> sortPriority(String sort) {
+		return todoDao.sortPriority(sort);
 	}
 
 	public static String getNowDate() {
@@ -70,6 +58,5 @@ public class TodoModel {
 		String formatNowDate = sdf2.format(nowDateTime);
 		return formatNowDate;
 	}
-
 
 }

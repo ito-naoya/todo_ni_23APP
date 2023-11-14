@@ -53,32 +53,32 @@
 		<div class="sortOption">
 			<form action="list" method="GET">
 				<button type="submit" class="sortBtn" value="asc">古い日付順に並べ替え</button>
-				<input type="hidden" value="asc" name="sortParam">
+				<input type="hidden" value="asc" name="sort">
 			</form>
 
 			<form action="list" method="GET">
 				<button type="submit" class="sortBtn" value="desc">新しい日付順に並べ替え</button>
-				<input type="hidden" value="desc" name="sortParam">
+				<input type="hidden" value="desc" name="sort">
 			</form>
 
 			<form action="list" method="GET">
 				<button type="submit" class="sortBtn" value="high">Highのみ表示</button>
-				<input type="hidden" value="high" name="sortParam">
+				<input type="hidden" value="high" name="sort">
 			</form>
 
 			<form action="list" method="GET">
 				<button type="submit" class="sortBtn" value="normal">normalのみ表示</button>
-				<input type="hidden" value="normal" name="sortParam">
+				<input type="hidden" value="normal" name="sort">
 			</form>
 
 			<form action="list" method="GET">
 				<button type="submit" class="sortBtn" value="low">lowのみ表示</button>
-				<input type="hidden" value="low" name="sortParam">
+				<input type="hidden" value="low" name="sort">
 			</form>
 
 			<form action="list" method="GET">
 				<button type="submit" class="sortBtn" value="all">全て表示</button>
-				<input type="hidden" value="all" name="sortParam">
+				<input type="hidden" value="all" name="sort">
 			</form>
 		</div>
 
