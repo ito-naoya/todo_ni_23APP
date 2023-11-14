@@ -46,45 +46,36 @@
 			</tbody>
 		</table>
 
-		<div class="todoOption">
-			<a href="new"><button class="todoNew">新規登録</button></a>
+		<div class="newTodo">
+			<a href="new"><button class="newBtn">新規登録</button></a>
 		</div>
+
+		<%
+		Map<String, String> sortMap = new LinkedHashMap<String, String>() {
+			{
+				put("asc", "古い日付順に並べ替え");
+				put("desc", "新しい日付順に並べ替え");
+				put("all", "登録順に並べ替え");
+				put("high", "Highのみ表示");
+				put("normal", "normalのみ表示");
+				put("low", "lowのみ表示");
+			}
+		};
+		%>
 
 		<div class="sortOption">
+			<%
+			for (Map.Entry<String, String> entry : sortMap.entrySet()) {
+			%>
 			<form action="list" method="GET">
-				<button type="submit" class="sortBtn" value="asc">古い日付順に並べ替え</button>
-				<input type="hidden" value="asc" name="sort">
+				<button type="submit" class="sortBtn"><%=entry.getValue()%></button>
+				<input type="hidden" value="<%=entry.getKey()%>" name="sort">
 			</form>
-
-			<form action="list" method="GET">
-				<button type="submit" class="sortBtn" value="desc">新しい日付順に並べ替え</button>
-				<input type="hidden" value="desc" name="sort">
-			</form>
-
-			<form action="list" method="GET">
-				<button type="submit" class="sortBtn" value="high">Highのみ表示</button>
-				<input type="hidden" value="high" name="sort">
-			</form>
-
-			<form action="list" method="GET">
-				<button type="submit" class="sortBtn" value="normal">normalのみ表示</button>
-				<input type="hidden" value="normal" name="sort">
-			</form>
-
-			<form action="list" method="GET">
-				<button type="submit" class="sortBtn" value="low">lowのみ表示</button>
-				<input type="hidden" value="low" name="sort">
-			</form>
-
-			<form action="list" method="GET">
-				<button type="submit" class="sortBtn" value="all">全て表示</button>
-				<input type="hidden" value="all" name="sort">
-			</form>
+			<%
+			}
+			%>
 		</div>
-
 	</div>
-
-
 
 </body>
 </html>
