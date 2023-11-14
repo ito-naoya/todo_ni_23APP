@@ -56,7 +56,7 @@
 				put("asc", "古い日付順に並べ替え");
 				put("desc", "新しい日付順に並べ替え");
 				put("all", "登録順に並べ替え");
-				put("high", "Highのみ表示");
+				put("high", "highのみ表示");
 				put("normal", "normalのみ表示");
 				put("low", "lowのみ表示");
 			}
