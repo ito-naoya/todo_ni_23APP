@@ -10,11 +10,11 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.TodoModel;
 
-@WebServlet("/todoEdit")
-public class TodoEdit extends HttpServlet {
+@WebServlet("/edit")
+public class EditController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public TodoEdit() {
+	public EditController() {
 		super();
 	}
 
@@ -25,9 +25,9 @@ public class TodoEdit extends HttpServlet {
 
 		TodoModel todoModel = new TodoModel();
 
-		request.setAttribute("record", todoModel.find(id));
+		request.setAttribute("todo", todoModel.select(id));
 
-		String view = "/WEB-INF/views/edit.jsp";
+		String view = "/WEB-INF/views/editView.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
 		dispatcher.forward(request, response);
 

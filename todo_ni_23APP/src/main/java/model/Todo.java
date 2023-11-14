@@ -1,6 +1,6 @@
-package model.dto;
+package model;
 
-public class TodoRecord{
+public class Todo{
 	
 	private int id;
 	private String title;
@@ -8,10 +8,17 @@ public class TodoRecord{
 	private String priority;
 	private String content;
 	
-	public TodoRecord() {};
+	public Todo() {};
 
-	public TodoRecord(int id, String title, String dateTime, String priority, String content) {
+	public Todo(int id, String title, String dateTime, String priority, String content) {
 		this.id = id;
+		this.title = title;
+		this.dateTime = dateTime;
+		this.priority = priority;
+		this.content = content;
+	}
+	
+	public Todo( String title, String dateTime, String priority, String content) {
 		this.title = title;
 		this.dateTime = dateTime;
 		this.priority = priority;

@@ -1,13 +1,9 @@
 @charset "UTF-8";
 
-.todoDelete {
+.delete {
 	background-color: red;
 	color: white;
 	border: solid 1px;
 	border-radius: 10px;
 	cursor: pointer;
 };
-
-.detailDiv{
-	
-}

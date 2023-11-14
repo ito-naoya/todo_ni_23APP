@@ -10,11 +10,11 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.TodoModel;
 
-@WebServlet("/todoDelete")
-public class TodoDelete extends HttpServlet {
+@WebServlet("/delete")
+public class DeleteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public TodoDelete() {
+	public DeleteController() {
 		super();
 	}
 
@@ -29,7 +29,7 @@ public class TodoDelete extends HttpServlet {
 
 		request.setAttribute("deleteMessage", deleteNum + "件のデータを削除しました。");
 
-		String view = "/WEB-INF/views/delete.jsp";
+		String view = "/WEB-INF/views/deleteView.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
 		dispatcher.forward(request, response);
 

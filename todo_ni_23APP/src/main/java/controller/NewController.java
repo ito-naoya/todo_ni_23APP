@@ -9,11 +9,11 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/todoNew")
-public class TodoNew extends HttpServlet {
+@WebServlet("/new")
+public class NewController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public TodoNew() {
+	public NewController() {
 		super();
 	}
 
@@ -21,7 +21,7 @@ public class TodoNew extends HttpServlet {
 
 			throws ServletException, IOException {
 
-		String view = "/WEB-INF/views/new.jsp";
+		String view = "/WEB-INF/views/newView.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
 		dispatcher.forward(request, response);
 
