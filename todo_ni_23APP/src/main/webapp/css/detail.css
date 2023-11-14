@@ -1,9 +1,11 @@
 @charset "UTF-8";
 
-.delete {
-	background-color: red;
+.deleteBtn {
+	background-color: orangered;
 	color: white;
 	border: solid 1px;
 	border-radius: 10px;
 	cursor: pointer;
 };
+
+
