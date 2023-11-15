@@ -35,7 +35,7 @@
 				
 				<tr>
 					<td class="todoDateTime"><%=todo.getDateTime()%></td>
-					<td class="todoText"><a href="todoDetail?id=<%=todo.getId()%>"><%=todo.getTitle()%></a></td><%--  --%>
+					<td class="todoText"><a href="todoDetail?id=<%=todo.getId()%>"><%=todo.getTitle()%></a></td>
 					<td class="todoPriority"><%=todo.getPriority()%></td>
 				</tr>
 
