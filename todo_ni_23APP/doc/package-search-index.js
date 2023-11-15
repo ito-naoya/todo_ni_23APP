@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"controller"},{"l":"dao"},{"l":"model"},{"l":"すべてのパッケージ","u":"allpackages-index.html"}];updateSearchResults();
