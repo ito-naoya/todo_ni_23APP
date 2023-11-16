@@ -25,7 +25,7 @@ public class RegisterController extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String view = "/WEB-INF/views/register.jsp";
+		String view = "/WEB-INF/views/registerView.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
 		dispatcher.forward(request, response);
 	}
