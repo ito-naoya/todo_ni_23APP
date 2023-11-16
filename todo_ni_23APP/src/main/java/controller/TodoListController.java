@@ -22,24 +22,25 @@ public class TodoListController extends HttpServlet {
 			throws ServletException, IOException {
 
 		String sort = request.getParameter("sort");
+		int userId = Integer.parseInt(request.getParameter("userId"));
 
 		TodoModel todoModel = new TodoModel();
 
 		if (sort == null) {
 			
-			request.setAttribute("todoList", todoModel.selectAll());
+			request.setAttribute("todoList", todoModel.selectAll(userId));
 
 		} else if (sort != null && sort.equals("asc") || sort.equals("desc")) {
 			
-			request.setAttribute("todoList", todoModel.orderByDateTime(sort));
+			request.setAttribute("todoList", todoModel.orderByDateTime(userId, sort));
 
 		} else if (sort != null && sort.equals("high") || sort.equals("normal") || sort.equals("low")) {
 			
-			request.setAttribute("todoList", todoModel.sortByPriority(sort));
+			request.setAttribute("todoList", todoModel.sortByPriority(userId, sort));
 
 		} else {
 			
-			request.setAttribute("todoList", todoModel.selectAll());
+			request.setAttribute("todoList", todoModel.selectAll(userId));
 			
 		}
 

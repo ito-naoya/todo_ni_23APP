@@ -16,7 +16,7 @@ public class TodoDao {
 	public static final String DB_PASSWORD = "";
 	public static final String DB_JDBC_DRIVER = "com.mysql.jdbc.Driver";
 
-	public ArrayList<Todo> selectAll() {
+	public ArrayList<Todo> selectAll(Integer userId) {
 
 		try {
 			Class.forName(DB_JDBC_DRIVER);
@@ -24,11 +24,13 @@ public class TodoDao {
 			e.printStackTrace();
 		}
 
-		String sql = "SELECT * FROM todos";
+		String sql = "SELECT * FROM todos WHERE user_id = ?";
 
 		try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
-				PreparedStatement statement = connection.prepareStatement(sql);
-				ResultSet results = statement.executeQuery()) {
+				PreparedStatement statement = connection.prepareStatement(sql);) {
+
+			statement.setInt(1, userId);
+			ResultSet results = statement.executeQuery();
 
 			ArrayList<Todo> todoList = new ArrayList<Todo>();
 
@@ -166,7 +168,7 @@ public class TodoDao {
 		}
 	}
 
-	public ArrayList<Todo> orderByDateTime(String sort) {
+	public ArrayList<Todo> orderByDateTime(int userId, String sort) {
 
 		try {
 			Class.forName(DB_JDBC_DRIVER);
@@ -174,11 +176,13 @@ public class TodoDao {
 			e.printStackTrace();
 		}
 
-		String sql = "SELECT * FROM todos ORDER BY dateTime " + sort;
+		String sql = "SELECT * FROM todos WHERE user_id = ? ORDER BY dateTime " + sort;
 
 		try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
-				PreparedStatement statement = connection.prepareStatement(sql);
-				ResultSet results = statement.executeQuery();) {
+				PreparedStatement statement = connection.prepareStatement(sql);) {
+
+			statement.setInt(1, userId);
+			ResultSet results = statement.executeQuery();
 
 			ArrayList<Todo> todoList = new ArrayList<Todo>();
 
@@ -202,7 +206,7 @@ public class TodoDao {
 		}
 	}
 
-	public ArrayList<Todo> sortByPriority(String sort) {
+	public ArrayList<Todo> sortByPriority(int userId, String sort) {
 
 		try {
 			Class.forName(DB_JDBC_DRIVER);
@@ -210,11 +214,13 @@ public class TodoDao {
 			e.printStackTrace();
 		}
 
-		String sql = "SELECT * FROM todos WHERE priority = '" + sort + "'";
+		String sql = "SELECT * FROM todos WHERE id = ? AND priority = '" + sort + "'";
 
 		try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
-				PreparedStatement statement = connection.prepareStatement(sql);
-				ResultSet results = statement.executeQuery();) {
+				PreparedStatement statement = connection.prepareStatement(sql);) {
+
+			statement.setInt(1, userId);
+			ResultSet results = statement.executeQuery();
 
 			ArrayList<Todo> todoList = new ArrayList<Todo>();
 

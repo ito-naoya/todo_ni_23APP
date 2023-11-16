@@ -17,8 +17,8 @@ public class TodoModel {
 		return formatNowDate;
 	}
 
-	public ArrayList<Todo> selectAll() {
-		return todoDao.selectAll();
+	public ArrayList<Todo> selectAll(Integer userId) {
+		return todoDao.selectAll(userId);
 	}
 
 	public Todo select(int id) {
@@ -50,12 +50,12 @@ public class TodoModel {
 		return todoDao.delete(id);
 	}
 
-	public ArrayList<Todo> orderByDateTime(String sort) {
-		return todoDao.orderByDateTime(sort);
+	public ArrayList<Todo> orderByDateTime(int userId, String sort) {
+		return todoDao.orderByDateTime(userId, sort);
 	}
 
-	public ArrayList<Todo> sortByPriority(String sort) {
-		return todoDao.sortByPriority(sort);
+	public ArrayList<Todo> sortByPriority(int userId, String sort) {
+		return todoDao.sortByPriority(userId, sort);
 	}
 
 }

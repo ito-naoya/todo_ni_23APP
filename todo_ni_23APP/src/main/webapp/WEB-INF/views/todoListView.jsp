@@ -12,8 +12,8 @@
 <body>
 
 	<div class="todoList">
-
-		<h1 class="todoHeader">とぅどぅ</h1>
+<% String userName = (String)session.getAttribute("userName");%>
+		<h1 class="todoHeader"><%= userName %>さんのとぅどぅ</h1>
 
 		<%
 		ArrayList<Todo> todoList = (ArrayList<Todo>) request.getAttribute("todoList");
