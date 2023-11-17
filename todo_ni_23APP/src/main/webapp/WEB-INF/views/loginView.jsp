@@ -13,16 +13,17 @@
 	<div class="topPage">
 
 		<form action="login" method="post">
-			<input type="text" name="userName"> <input type="password"
-				name="password"> <input type="submit" value="ログイン">
+			<label for="userName">ユーザ名</label> <input type="text" name="userName">
+			<br> <label for="password">パスワード</label> <input type="password"
+				　name="password"><br> <input type="submit" value="ログイン">
 		</form>
 
 		<form action="register" method="get">
 			<input type="submit" value="新規登録">
 		</form>
 
- 	
-</div>
+
+	</div>
 
 </body>
 </html>

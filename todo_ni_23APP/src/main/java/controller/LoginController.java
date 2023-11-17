@@ -20,39 +20,39 @@ public class LoginController extends HttpServlet {
 		super();
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	protected void doGet(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException {
 
 		String view = "/WEB-INF/views/loginView.jsp";
-		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
-		dispatcher.forward(request, response);
+		RequestDispatcher dispatcher = req.getRequestDispatcher(view);
+		dispatcher.forward(req, res);
 
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	protected void doPost(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException {
 
-		String userName = request.getParameter("userName");
-		String password = request.getParameter("password");
+		String userName = req.getParameter("userName");
+		String password = req.getParameter("password");
 
 		UserModel userModel = new UserModel();
 		TodoModel todoModel = new TodoModel();
 
-		userModel.login(request, userName, password);
+		userModel.login(req, userName, password);
 		
-		HttpSession session = request.getSession();
+		HttpSession session = req.getSession();
 		String usrName = (String)session.getAttribute("userName");
-		Integer userId = (Integer)session.getAttribute("userId");
+		int userId = (int)session.getAttribute("userId");
 		
 		if(usrName != null) {			
-			request.setAttribute("todoList", todoModel.selectAll(userId));
+			req.setAttribute("todoList", todoModel.selectAll(userId));
 			
 			String view = "/WEB-INF/views/todoListView.jsp";
-			RequestDispatcher dispatcher = request.getRequestDispatcher(view);
-			dispatcher.forward(request, response);
+			RequestDispatcher dispatcher = req.getRequestDispatcher(view);
+			dispatcher.forward(req, res);
 			
 		}else {
-			response.sendRedirect("register");
+			res.sendRedirect("register");
 		}
 
 
