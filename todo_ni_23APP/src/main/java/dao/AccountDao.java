@@ -35,7 +35,6 @@ public class AccountDao{
 			statement.setString(2, password);
 			ResultSet result = statement.executeQuery();
 
-			
 			while (result.next()) {
 				
 				user = new User();

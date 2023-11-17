@@ -13,10 +13,10 @@ public class UserModel {
 	public void login(HttpServletRequest req, String userName, String password) {
 		
 		String hashedPassword ="";
+		
 		try {
 			hashedPassword = HashGenerator.generateHash(password);
 		} catch (NoSuchAlgorithmException e) {
-			// TODO 自動生成された catch ブロック
 			e.printStackTrace();
 		}
 		

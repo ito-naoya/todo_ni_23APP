@@ -44,7 +44,8 @@ public class LoginController extends HttpServlet {
 		String usrName = (String)session.getAttribute("userName");
 		Integer userId = (Integer)session.getAttribute("userId");
 		
-		if(usrName != null) {			
+		if(usrName != null) {
+			
 			req.setAttribute("todoList", todoModel.selectAll(userId));
 			
 			String view = "/WEB-INF/views/todoListView.jsp";
@@ -52,7 +53,9 @@ public class LoginController extends HttpServlet {
 			dispatcher.forward(req, res);
 			
 		}else {
+			
 			res.sendRedirect("register");
+			
 		}
 
 
