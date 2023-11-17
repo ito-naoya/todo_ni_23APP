@@ -21,14 +21,14 @@ public class TodoUpdateController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException {
 
-		int id = Integer.parseInt(req.getParameter("id"));
+		int todoId = Integer.parseInt(req.getParameter("id"));
 		String title = req.getParameter("title");
 		String priority = req.getParameter("priority");
 		String content = req.getParameter("content");
 		
 		TodoModel todoModel = new TodoModel();
 		
-		int updateNum = todoModel.update(id, title, priority, content);
+		int updateNum = todoModel.update(todoId, title, priority, content);
 
 		req.setAttribute("updateMessage", updateNum + "件のデータを更新しました。");
 
