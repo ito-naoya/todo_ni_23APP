@@ -35,6 +35,15 @@ h2 {
 	cursor: pointer;
 }
 
+.newBtn {
+	background-color: red;
+	color: white;
+	border: solid 1px;
+	border-radius: 10px;
+	margin-bottom: 20px;
+	cursor: pointer;
+}
+
 
 .todoTable {
 	text-align: center;
