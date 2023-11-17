@@ -15,7 +15,7 @@
 
 	<p><%=request.getAttribute("createMessage")%></p>
 
-	<a href="todoList">戻る</a>
+	<a href="todoList" >戻る</a>
 
 </body>
 </html>

@@ -17,6 +17,7 @@ public class AccountDao{
 
 	public User login(String name, String password) {
 
+
 		try {
 			Class.forName(DB_JDBC_DRIVER);
 		} catch (Exception e) {
@@ -36,10 +37,10 @@ public class AccountDao{
 			
 			while (result.next()) {
 
-				int id = result.getInt("id");
+				int userId = result.getInt("id");
 				String userName = result.getString("userName");
 				
-				user.setId(id);
+				user.setUserId(userId);
 				user.setUserName(userName);
 			}
 			
@@ -53,4 +54,28 @@ public class AccountDao{
 
 	}
 
+	public int  insert(User user) {
+		
+		try {
+			Class.forName(DB_JDBC_DRIVER);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		String sql = "INSERT INTO users (userName, password) VALUES(?, ?)";
+
+		try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+				PreparedStatement statement = connection.prepareStatement(sql);) {
+
+			statement.setString(1, user.getUserName());
+			statement.setString(2, user.getPassword());
+			
+			return statement.executeUpdate();
+
+		} catch (SQLException e) {
+
+			throw new RuntimeException(e);
+
+		}
+	}
 }
