@@ -8,6 +8,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import model.TodoModel;
 
 @WebServlet("/todoDelete")
@@ -21,17 +22,28 @@ public class TodoDeleteController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException {
 
-		int todoId = Integer.parseInt(req.getParameter("id"));
+		HttpSession session = req.getSession();
+		Integer userId = (Integer) session.getAttribute("userId");
 
-		TodoModel todoModel = new TodoModel();
+		if (userId == null) {
+			
+			res.sendRedirect("login");
+			
+		} else {
+			
+			int todoId = Integer.parseInt(req.getParameter("id"));
 
-		int deleteNum = todoModel.delete(todoId);
+			TodoModel todoModel = new TodoModel();
 
-		req.setAttribute("deleteMessage", deleteNum + "件のデータを削除しました。");
+			int deleteNum = todoModel.delete(todoId);
 
-		String view = "/WEB-INF/views/todoDeleteView.jsp";
-		RequestDispatcher dispatcher = req.getRequestDispatcher(view);
-		dispatcher.forward(req, res);
+			req.setAttribute("deleteMessage", deleteNum + "件のデータを削除しました。");
+
+			String view = "/WEB-INF/views/todoDeleteView.jsp";
+			RequestDispatcher dispatcher = req.getRequestDispatcher(view);
+			dispatcher.forward(req, res);
+			
+		}
 
 	}
 

@@ -26,7 +26,7 @@ public class AccountDao{
 
 		String sql = "SELECT * FROM users WHERE userName = ? AND password = ?";
 
-		User user = new User();
+		User user = null;
 
 		try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
 				PreparedStatement statement = connection.prepareStatement(sql);) {
@@ -34,8 +34,11 @@ public class AccountDao{
 			statement.setString(1, name);
 			statement.setString(2, password);
 			ResultSet result = statement.executeQuery();
+
 			
 			while (result.next()) {
+				
+				user = new User();
 
 				int userId = result.getInt("id");
 				String userName = result.getString("userName");

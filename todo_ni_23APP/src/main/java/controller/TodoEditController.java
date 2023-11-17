@@ -8,6 +8,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import model.TodoModel;
 
 @WebServlet("/todoEdit")
@@ -20,16 +21,27 @@ public class TodoEditController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException {
-
-		int id = Integer.parseInt(req.getParameter("id"));
-
-		TodoModel todoModel = new TodoModel();
-
-		req.setAttribute("todo", todoModel.select(id));
-
-		String view = "/WEB-INF/views/todoEditView.jsp";
-		RequestDispatcher dispatcher = req.getRequestDispatcher(view);
-		dispatcher.forward(req, res);
+		
+		HttpSession session = req.getSession();
+		Integer userId = (Integer)session.getAttribute("userId");
+		
+		if(userId == null) {
+			
+			res.sendRedirect("login");
+			
+		}else {			
+			
+			int id = Integer.parseInt(req.getParameter("id"));
+			
+			TodoModel todoModel = new TodoModel();
+			
+			req.setAttribute("todo", todoModel.select(id));
+			
+			String view = "/WEB-INF/views/todoEditView.jsp";
+			RequestDispatcher dispatcher = req.getRequestDispatcher(view);
+			dispatcher.forward(req, res);
+			
+		}
 
 	}
 

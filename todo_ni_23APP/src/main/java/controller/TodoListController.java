@@ -23,34 +23,39 @@ public class TodoListController extends HttpServlet {
 			throws ServletException, IOException {
 
 		HttpSession session = req.getSession();
-		int userId = (int)session.getAttribute("userId");
-		
+		Integer userId = (Integer) session.getAttribute("userId");
 		String sort = req.getParameter("sort");
-		
 
 		TodoModel todoModel = new TodoModel();
 
-		if (sort == null) {
-			
-			req.setAttribute("todoList", todoModel.selectAll(userId));
+		if (userId == null) {
 
-		} else if (sort != null && sort.equals("asc") || sort.equals("desc")) {
-			
-			req.setAttribute("todoList", todoModel.orderByDateTime(userId, sort));
-
-		} else if (sort != null && sort.equals("high") || sort.equals("normal") || sort.equals("low")) {
-			
-			req.setAttribute("todoList", todoModel.sortByPriority(userId, sort));
+			res.sendRedirect("login");
 
 		} else {
-			
-			req.setAttribute("todoList", todoModel.selectAll(userId));
-			
-		}
 
-		String view = "/WEB-INF/views/todoListView.jsp";
-		RequestDispatcher dispatcher = req.getRequestDispatcher(view);
-		dispatcher.forward(req, res);
+			if (sort == null) {
+
+				req.setAttribute("todoList", todoModel.selectAll(userId));
+
+			} else if (sort != null && sort.equals("asc") || sort.equals("desc")) {
+
+				req.setAttribute("todoList", todoModel.orderByDateTime(userId, sort));
+
+			} else if (sort != null && sort.equals("high") || sort.equals("normal") || sort.equals("low")) {
+
+				req.setAttribute("todoList", todoModel.sortByPriority(userId, sort));
+
+			} else {
+
+				req.setAttribute("todoList", todoModel.selectAll(userId));
+			}
+
+			String view = "/WEB-INF/views/todoListView.jsp";
+			RequestDispatcher dispatcher = req.getRequestDispatcher(view);
+			dispatcher.forward(req, res);
+
+		}
 
 	}
 
