@@ -8,6 +8,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import model.UserModel;
 
 /**
  * Servlet implementation class RegisterController
@@ -23,11 +24,28 @@ public class RegisterController extends HttpServlet {
     }
 
 	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		
 		String view = "/WEB-INF/views/registerView.jsp";
-		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
-		dispatcher.forward(request, response);
+		RequestDispatcher dispatcher = req.getRequestDispatcher(view);
+		dispatcher.forward(req, res);
+		
+	}
+	
+	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		
+		String userName = req.getParameter("userName");
+		String password = req.getParameter("password");
+		
+		UserModel userModel = new UserModel();
+		int registerNum = userModel.insert(userName, password);
+		
+		req.setAttribute("registerMessage", registerNum + "件のアカウントを新規登録しました。");
+		
+		String view = "/WEB-INF/views/newRegisterView.jsp";
+		RequestDispatcher dispatcher = req.getRequestDispatcher(view);
+		dispatcher.forward(req, res);
+		
 	}
 
 
