@@ -2,36 +2,47 @@ package model;
 
 public class Todo {
 
-	private int id;
+	private int todoId;
 	private String title;
 	private String dateTime;
 	private String priority;
 	private String content;
+	private int user_Id;
 
 	public Todo() {
 	};
 
-	public Todo(int id, String title, String dateTime, String priority, String content) {
-		this.id = id;
+	public Todo(int todoId, String title, String dateTime, String priority, String content, int user_id) {
+		this.todoId = todoId;
 		this.title = title;
 		this.dateTime = dateTime;
 		this.priority = priority;
 		this.content = content;
+		this.user_Id = user_id;
 	}
 
-	public Todo(String title, String dateTime, String priority, String content) {
+	public int getUser_Id() {
+		return user_Id;
+	}
+
+	public void setUser_Id(int user_Id) {
+		this.user_Id = user_Id;
+	}
+
+	public Todo(String title, String dateTime, String priority, String content, int user_id) {
 		this.title = title;
 		this.dateTime = dateTime;
 		this.priority = priority;
 		this.content = content;
+		this.user_Id = user_id;
 	}
 
-	public int getId() {
-		return id;
+	public int getTodoId() {
+		return todoId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setTodoId(int todoId) {
+		this.todoId = todoId;
 	}
 
 	public String getTitle() {

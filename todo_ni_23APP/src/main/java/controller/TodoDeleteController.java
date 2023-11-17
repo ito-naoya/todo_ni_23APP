@@ -18,20 +18,20 @@ public class TodoDeleteController extends HttpServlet {
 		super();
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	protected void doGet(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException {
 
-		int id = Integer.parseInt(request.getParameter("id"));
+		int todoId = Integer.parseInt(req.getParameter("id"));
 
 		TodoModel todoModel = new TodoModel();
 
-		int deleteNum = todoModel.delete(id);
+		int deleteNum = todoModel.delete(todoId);
 
-		request.setAttribute("deleteMessage", deleteNum + "件のデータを削除しました。");
+		req.setAttribute("deleteMessage", deleteNum + "件のデータを削除しました。");
 
 		String view = "/WEB-INF/views/todoDeleteView.jsp";
-		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
-		dispatcher.forward(request, response);
+		RequestDispatcher dispatcher = req.getRequestDispatcher(view);
+		dispatcher.forward(req, res);
 
 	}
 

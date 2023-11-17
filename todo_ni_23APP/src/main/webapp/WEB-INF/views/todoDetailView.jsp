@@ -26,9 +26,9 @@
 			<li class="todoPriority"><%=todo.getPriority()%></li>
 		</ul>
 
-		<a href="todoEdit?id=<%=todo.getId()%>">編集</a> 
+		<a href="todoEdit?id=<%=todo.getTodoId()%>">編集</a> 
 		<a href="todoList">戻る</a>
-		<a href="todoDelete?id=<%=todo.getId()%>">
+		<a href="todoDelete?id=<%=todo.getTodoId()%>">
 			<button class="deleteBtn">削除</button>
 		</a>
 

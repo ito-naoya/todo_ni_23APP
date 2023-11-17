@@ -8,6 +8,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import model.TodoModel;
 
 @WebServlet("/todoList")
@@ -18,35 +19,38 @@ public class TodoListController extends HttpServlet {
 		super();
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	protected void doGet(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException {
 
-		String sort = request.getParameter("sort");
-		int userId = Integer.parseInt(request.getParameter("userId"));
+		HttpSession session = req.getSession();
+		int userId = (int)session.getAttribute("userId");
+		
+		String sort = req.getParameter("sort");
+		
 
 		TodoModel todoModel = new TodoModel();
 
 		if (sort == null) {
 			
-			request.setAttribute("todoList", todoModel.selectAll(userId));
+			req.setAttribute("todoList", todoModel.selectAll(userId));
 
 		} else if (sort != null && sort.equals("asc") || sort.equals("desc")) {
 			
-			request.setAttribute("todoList", todoModel.orderByDateTime(userId, sort));
+			req.setAttribute("todoList", todoModel.orderByDateTime(userId, sort));
 
 		} else if (sort != null && sort.equals("high") || sort.equals("normal") || sort.equals("low")) {
 			
-			request.setAttribute("todoList", todoModel.sortByPriority(userId, sort));
+			req.setAttribute("todoList", todoModel.sortByPriority(userId, sort));
 
 		} else {
 			
-			request.setAttribute("todoList", todoModel.selectAll(userId));
+			req.setAttribute("todoList", todoModel.selectAll(userId));
 			
 		}
 
 		String view = "/WEB-INF/views/todoListView.jsp";
-		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
-		dispatcher.forward(request, response);
+		RequestDispatcher dispatcher = req.getRequestDispatcher(view);
+		dispatcher.forward(req, res);
 
 	}
 

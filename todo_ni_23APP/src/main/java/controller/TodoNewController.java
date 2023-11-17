@@ -17,13 +17,13 @@ public class TodoNewController extends HttpServlet {
 		super();
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	protected void doGet(HttpServletRequest req, HttpServletResponse res)
 
 			throws ServletException, IOException {
 
 		String view = "/WEB-INF/views/todoNewView.jsp";
-		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
-		dispatcher.forward(request, response);
+		RequestDispatcher dispatcher = req.getRequestDispatcher(view);
+		dispatcher.forward(req, res);
 
 	}
 

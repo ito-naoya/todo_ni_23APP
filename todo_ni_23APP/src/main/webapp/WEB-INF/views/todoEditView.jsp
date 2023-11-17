@@ -22,7 +22,7 @@
 	<h1>TODO編集</h1>
 
 	<form action="todoUpdate" method="POST">
-		<input type="hidden" name="id" value="<%=todo.getId()%>"></input>
+		<input type="hidden" name="id" value="<%=todo.getTodoId()%>"></input>
 
 		<div class="todoTitleDiv">
 			<label for="title" class="todoTitleLabel">タイトル</label> <br> <input

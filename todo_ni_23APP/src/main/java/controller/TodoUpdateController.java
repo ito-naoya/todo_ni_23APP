@@ -18,23 +18,23 @@ public class TodoUpdateController extends HttpServlet {
 		super();
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	protected void doPost(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException {
 
-		int id = Integer.parseInt(request.getParameter("id"));
-		String title = request.getParameter("title");
-		String priority = request.getParameter("priority");
-		String content = request.getParameter("content");
+		int id = Integer.parseInt(req.getParameter("id"));
+		String title = req.getParameter("title");
+		String priority = req.getParameter("priority");
+		String content = req.getParameter("content");
 		
 		TodoModel todoModel = new TodoModel();
 		
 		int updateNum = todoModel.update(id, title, priority, content);
 
-		request.setAttribute("updateMessage", updateNum + "件のデータを更新しました。");
+		req.setAttribute("updateMessage", updateNum + "件のデータを更新しました。");
 
 		String view = "/WEB-INF/views/todoUpdateView.jsp";
-		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
-		dispatcher.forward(request, response);
+		RequestDispatcher dispatcher = req.getRequestDispatcher(view);
+		dispatcher.forward(req, res);
 	}
 
 }

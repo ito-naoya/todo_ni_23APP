@@ -12,8 +12,11 @@
 <body>
 
 	<div class="todoList">
-<% String userName = (String)session.getAttribute("userName");%>
-		<h1 class="todoHeader"><%= userName %>さんのとぅどぅ</h1>
+		<%
+		String userName = (String) session.getAttribute("userName");
+		%>
+		<h1 class="todoHeader"><%=userName%>さんのとぅどぅ
+		</h1>
 
 		<%
 		ArrayList<Todo> todoList = (ArrayList<Todo>) request.getAttribute("todoList");
@@ -32,10 +35,11 @@
 				<%
 				for (Todo todo : todoList) {
 				%>
-				
+
 				<tr>
 					<td class="todoDateTime"><%=todo.getDateTime()%></td>
-					<td class="todoText"><a href="todoDetail?id=<%=todo.getId()%>"><%=todo.getTitle()%></a></td>
+					<td class="todoText"><a
+						href="todoDetail?id=<%=todo.getTodoId()%>"><%=todo.getTitle()%></a></td>
 					<td class="todoPriority"><%=todo.getPriority()%></td>
 				</tr>
 
@@ -48,6 +52,7 @@
 
 		<div class="newTodo">
 			<a href="todoNew"><button class="newBtn">新規登録</button></a>
+			<a href="logout"><button class="logoutBtn">ログアウト</button></a>
 		</div>
 
 		<%
@@ -69,7 +74,7 @@
 			%>
 			<form action="todoList" method="GET">
 				<button type="submit" class="sortBtn"><%=entry.getValue()%></button>
-				<input type="hidden" value="<%=entry.getKey()%>" name="sort">
+				<input type="hidden" value="<%= entry.getKey() %>" name="sort">
 			</form>
 			<%
 			}

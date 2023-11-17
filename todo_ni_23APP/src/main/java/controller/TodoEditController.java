@@ -18,18 +18,18 @@ public class TodoEditController extends HttpServlet {
 		super();
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	protected void doGet(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException {
 
-		int id = Integer.parseInt(request.getParameter("id"));
+		int id = Integer.parseInt(req.getParameter("id"));
 
 		TodoModel todoModel = new TodoModel();
 
-		request.setAttribute("todo", todoModel.select(id));
+		req.setAttribute("todo", todoModel.select(id));
 
 		String view = "/WEB-INF/views/todoEditView.jsp";
-		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
-		dispatcher.forward(request, response);
+		RequestDispatcher dispatcher = req.getRequestDispatcher(view);
+		dispatcher.forward(req, res);
 
 	}
 

@@ -36,13 +36,14 @@ public class TodoDao {
 
 			while (results.next()) {
 
-				int id = results.getInt("id");
+				int todoId = results.getInt("id");
 				String title = results.getString("title");
 				String dateTime = results.getString("dateTime");
 				String content = results.getString("content");
 				String priority = results.getString("priority");
+				int user_id = results.getInt("user_id");
 
-				todoList.add(new Todo(id, title, dateTime, priority, content));
+				todoList.add(new Todo(todoId, title, dateTime, priority, content, user_id));
 			}
 
 			return todoList;
@@ -54,7 +55,7 @@ public class TodoDao {
 		}
 	}
 
-	public Todo select(int id) {
+	public Todo select(int todoId) {
 
 		try {
 			Class.forName(DB_JDBC_DRIVER);
@@ -67,18 +68,19 @@ public class TodoDao {
 		try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
 				PreparedStatement statement = connection.prepareStatement(sql);) {
 
-			statement.setInt(1, id);
+			statement.setInt(1, todoId);
 			ResultSet result = statement.executeQuery();
 
 			Todo todo = new Todo();
 
 			while (result.next()) {
 
-				todo.setId(result.getInt("id"));
+				todo.setTodoId(result.getInt("id"));
 				todo.setTitle(result.getString("title"));
 				todo.setDateTime(result.getString("dateTime"));
 				todo.setPriority(result.getString("priority"));
 				todo.setContent(result.getString("content"));
+				todo.setUser_Id(result.getInt("user_id"));
 			}
 
 			return todo;
@@ -98,7 +100,7 @@ public class TodoDao {
 			e.printStackTrace();
 		}
 
-		String sql = "INSERT INTO todos (title, dateTime, priority, content) VALUES(?, ?, ?, ?)";
+		String sql = "INSERT INTO todos (title, dateTime, priority, content, user_id) VALUES(?, ?, ?, ?, ?)";
 
 		try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
 				PreparedStatement statement = connection.prepareStatement(sql);) {
@@ -107,7 +109,7 @@ public class TodoDao {
 			statement.setString(2, todo.getDateTime());
 			statement.setString(3, todo.getPriority());
 			statement.setString(4, todo.getContent());
-
+			statement.setInt(5, todo.getUser_Id());
 			return statement.executeUpdate();
 
 		} catch (SQLException e) {
@@ -134,7 +136,7 @@ public class TodoDao {
 			statement.setString(2, todo.getDateTime());
 			statement.setString(3, todo.getPriority());
 			statement.setString(4, todo.getContent());
-			statement.setInt(5, todo.getId());
+			statement.setInt(5, todo.getTodoId());
 
 			return statement.executeUpdate();
 
@@ -145,7 +147,7 @@ public class TodoDao {
 		}
 	}
 
-	public int delete(int id) {
+	public int delete(int todoId) {
 
 		try {
 			Class.forName(DB_JDBC_DRIVER);
@@ -158,7 +160,7 @@ public class TodoDao {
 		try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
 				PreparedStatement statement = connection.prepareStatement(sql);) {
 
-			statement.setInt(1, id);
+			statement.setInt(1, todoId);
 			return statement.executeUpdate();
 
 		} catch (SQLException e) {
@@ -188,13 +190,14 @@ public class TodoDao {
 
 			while (results.next()) {
 
-				int id = results.getInt("id");
+				int todoId = results.getInt("id");
 				String title = results.getString("title");
 				String dateTime = results.getString("dateTime");
 				String content = results.getString("content");
 				String priority = results.getString("priority");
+				int user_id = results.getInt("user_id");
 
-				todoList.add(new Todo(id, title, dateTime, priority, content));
+				todoList.add(new Todo(todoId, title, dateTime, priority, content, user_id));
 			}
 
 			return todoList;
@@ -214,7 +217,7 @@ public class TodoDao {
 			e.printStackTrace();
 		}
 
-		String sql = "SELECT * FROM todos WHERE id = ? AND priority = '" + sort + "'";
+		String sql = "SELECT * FROM todos WHERE user_id = ? AND priority = '" + sort + "'";
 
 		try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
 				PreparedStatement statement = connection.prepareStatement(sql);) {
@@ -226,13 +229,14 @@ public class TodoDao {
 
 			while (results.next()) {
 
-				int id = results.getInt("id");
+				int todoId = results.getInt("id");
 				String title = results.getString("title");
 				String dateTime = results.getString("dateTime");
 				String content = results.getString("content");
 				String priority = results.getString("priority");
+				int user_id = results.getInt("user_id");
 
-				todoList.add(new Todo(id, title, dateTime, priority, content));
+				todoList.add(new Todo(todoId, title, dateTime, priority, content, user_id));
 			}
 
 			return todoList;
