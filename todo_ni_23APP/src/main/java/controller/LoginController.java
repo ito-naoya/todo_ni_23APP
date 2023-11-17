@@ -42,7 +42,7 @@ public class LoginController extends HttpServlet {
 		
 		HttpSession session = req.getSession();
 		String usrName = (String)session.getAttribute("userName");
-		int userId = (int)session.getAttribute("userId");
+		Integer userId = (Integer)session.getAttribute("userId");
 		
 		if(usrName != null) {			
 			req.setAttribute("todoList", todoModel.selectAll(userId));
