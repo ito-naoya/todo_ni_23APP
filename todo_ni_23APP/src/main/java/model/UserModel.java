@@ -15,9 +15,13 @@ public class UserModel {
 		String hashedPassword ="";
 		
 		try {
+			
 			hashedPassword = HashGenerator.generateHash(password);
+			
 		} catch (NoSuchAlgorithmException e) {
+			
 			e.printStackTrace();
+			
 		}
 		
 		if(hashedPassword != "" && hashedPassword != password) {

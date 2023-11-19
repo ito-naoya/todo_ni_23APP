@@ -23,6 +23,10 @@ public class LoginController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException {
 
+		HttpSession session = req.getSession();
+
+		session.invalidate();
+
 		String view = "/WEB-INF/views/loginView.jsp";
 		RequestDispatcher dispatcher = req.getRequestDispatcher(view);
 		dispatcher.forward(req, res);
@@ -39,25 +43,24 @@ public class LoginController extends HttpServlet {
 		TodoModel todoModel = new TodoModel();
 
 		userModel.login(req, userName, password);
-		
+
 		HttpSession session = req.getSession();
-		String usrName = (String)session.getAttribute("userName");
-		Integer userId = (Integer)session.getAttribute("userId");
-		
-		if(usrName != null) {
-			
+		String usrName = (String) session.getAttribute("userName");
+		Integer userId = (Integer) session.getAttribute("userId");
+
+		if (usrName != null) {
+
 			req.setAttribute("todoList", todoModel.selectAll(userId));
-			
+
 			String view = "/WEB-INF/views/todoListView.jsp";
 			RequestDispatcher dispatcher = req.getRequestDispatcher(view);
 			dispatcher.forward(req, res);
-			
-		}else {
-			
-			res.sendRedirect("register");
-			
-		}
 
+		} else {
+
+			res.sendRedirect("register");
+
+		}
 
 	}
 
