@@ -2,13 +2,13 @@ package model;
 
 import java.security.NoSuchAlgorithmException;
 
-import dao.AccountDao;
+import dao.UserDao;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
 public class UserModel {
 
-	AccountDao accountDao = new AccountDao();
+	UserDao accountDao = new UserDao();
 
 	public void login(HttpServletRequest req, String userName, String password) {
 		

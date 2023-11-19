@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 import model.User;
 
-public class AccountDao{
+public class UserDao{
 
 	public static final String DB_URL = "jdbc:mysql://localhost/todo";
 	public static final String DB_USER = "root";
