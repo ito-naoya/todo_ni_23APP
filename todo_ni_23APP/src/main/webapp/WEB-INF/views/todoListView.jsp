@@ -81,29 +81,43 @@
 		%>
 
 		<div class="sortOption">
+		
 			<%
 			for (Map.Entry<String, String> entry : sortMap.entrySet()) {
 			%>
+			
 			<form action="todoList" method="GET">
+			
 				<button type="submit" class="sortBtn"><%=entry.getValue()%></button>
 				<input type="hidden" value="<%=entry.getKey()%>" name="sort">
+				
 			</form>
+			
 			<%
 			}
 			%>
+			
 		</div>
 	</div>
+	
 	<%
 	} else {
 	%>
+	
 	<div class="topPage">
 
 		<h1>ログイン画面</h1>
 
 		<form action="login" method="post">
-			<label for="userName">ユーザ名</label> <input type="text" name="userName">
-			<br> <label for="password">パスワード</label> <input type="password"
-				name="password"> <br> <input type="submit" value="ログイン">
+		
+			<label for="userName">ユーザ名</label> 
+			<input type="text" name="userName">
+			<br> 
+			<label for="password">パスワード</label>
+			<input type="password"　name="password">
+			<br> 
+			<input type="submit" value="ログイン">
+				
 		</form>
 
 		<form action="register" method="get">
@@ -111,6 +125,7 @@
 		</form>
 
 	</div>
+	
 	<%
 	}
 	%>
