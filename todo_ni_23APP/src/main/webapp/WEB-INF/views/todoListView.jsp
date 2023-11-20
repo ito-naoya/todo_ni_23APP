@@ -98,6 +98,8 @@
 	%>
 	<div class="topPage">
 
+		<h1>ログイン画面</h1>
+
 		<form action="login" method="post">
 			<label for="userName">ユーザ名</label> <input type="text" name="userName">
 			<br> <label for="password">パスワード</label> <input type="password"
