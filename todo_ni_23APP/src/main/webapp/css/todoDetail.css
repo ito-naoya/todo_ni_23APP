@@ -6,6 +6,16 @@
 	border: solid 1px;
 	border-radius: 10px;
 	cursor: pointer;
+	
+};
+
+.detailDiv{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-top: 200px;
+	text-align: center;
 };
 
 
