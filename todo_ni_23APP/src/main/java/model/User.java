@@ -13,6 +13,11 @@ public class User {
 		this.userName = userName;
 		this.password = hashedPassword;
 	}
+	
+	public User(String userName, int userId) {
+		this.userName = userName;
+		this.userId = userId;
+	}
 
 	public Integer getUserId() {
 		return userId;
