@@ -2,7 +2,6 @@ package controller;
 
 import java.io.IOException;
 
-import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -16,28 +15,27 @@ public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	public LoginController() {
-		super();
 		
+		super();
+
 	}
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException {
-		
-		String view = "/WEB-INF/views/loginView.jsp";
-		RequestDispatcher dispatcher = req.getRequestDispatcher(view);
-		dispatcher.forward(req, res);
+
+		res.sendRedirect("todoList");
 
 	}
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException {
-		
+
 		HttpSession invalidateSession = req.getSession();
-		
+
 		invalidateSession.invalidate();
 
 		String userName = req.getParameter("userName");
-		
+
 		String password = req.getParameter("password");
 
 		UserModel userModel = new UserModel();
@@ -45,10 +43,12 @@ public class LoginController extends HttpServlet {
 		userModel.login(req, userName, password);
 
 		HttpSession session = req.getSession();
-		
+
 		String usrName = (String) session.getAttribute("userName");
 
-		if (usrName != null) {
+		Integer userId = (Integer) session.getAttribute("userId");
+
+		if (usrName != null && userId != null) {
 
 			res.sendRedirect("todoList");
 

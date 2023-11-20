@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.*"%>
 <%@ page import="model.Todo"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,11 +12,22 @@
 </head>
 <body>
 
+	<%
+	String userName = (String) request.getAttribute("userName");
+	%>
+
+	<%
+	Integer userId = (Integer) request.getAttribute("userId");
+	%>
+
+	<%
+	if (userName != null && userId != null) {
+	%>
+
 	<div class="todoList">
-		<%
-		String userName = (String) session.getAttribute("userName");
-		%>
-		<h1 class="todoHeader"><%=userName%>さんのとぅどぅ
+
+		<h1 class="todoHeader">
+			<%=userName%>さんのとぅどぅ
 		</h1>
 
 		<%
@@ -51,8 +63,8 @@
 		</table>
 
 		<div class="newTodo">
-			<a href="todoNew"><button class="newBtn">新規登録</button></a>
-			<a href="logout"><button class="logoutBtn">ログアウト</button></a>
+			<a href="todoNew"><button class="newBtn">新規登録</button></a> <a
+				href="logout"><button class="logoutBtn">ログアウト</button></a>
 		</div>
 
 		<%
@@ -74,13 +86,32 @@
 			%>
 			<form action="todoList" method="GET">
 				<button type="submit" class="sortBtn"><%=entry.getValue()%></button>
-				<input type="hidden" value="<%= entry.getKey() %>" name="sort">
+				<input type="hidden" value="<%=entry.getKey()%>" name="sort">
 			</form>
 			<%
 			}
 			%>
 		</div>
 	</div>
+	<%
+	} else {
+	%>
+	<div class="topPage">
+
+		<form action="login" method="post">
+			<label for="userName">ユーザ名</label> <input type="text" name="userName">
+			<br> <label for="password">パスワード</label> <input type="password"
+				name="password"> <br> <input type="submit" value="ログイン">
+		</form>
+
+		<form action="register" method="get">
+			<input type="submit" value="新規登録">
+		</form>
+
+	</div>
+	<%
+	}
+	%>
 
 </body>
 </html>

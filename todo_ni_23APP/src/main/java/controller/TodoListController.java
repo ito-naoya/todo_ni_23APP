@@ -20,19 +20,26 @@ public class TodoListController extends HttpServlet {
 	}
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse res)
+
 			throws ServletException, IOException {
 
 		HttpSession session = req.getSession();
-		
+
 		Integer userId = (Integer) session.getAttribute("userId");
+		String userName = (String)session.getAttribute("userName");
 		
+		req.setAttribute("userId", userId);
+		req.setAttribute("userName", userName);
+
 		String sort = req.getParameter("sort");
 
 		TodoModel todoModel = new TodoModel();
 
 		if (userId == null) {
 
-			res.sendRedirect("login");
+			String view = "/WEB-INF/views/todoListView.jsp";
+			RequestDispatcher dispatcher = req.getRequestDispatcher(view);
+			dispatcher.forward(req, res);
 
 		} else {
 
@@ -51,6 +58,7 @@ public class TodoListController extends HttpServlet {
 			} else {
 
 				req.setAttribute("todoList", todoModel.selectAll(userId));
+				
 			}
 
 			String view = "/WEB-INF/views/todoListView.jsp";
