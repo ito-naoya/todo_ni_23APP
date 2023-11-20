@@ -31,10 +31,6 @@ public class LoginController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException {
 
-		HttpSession invalidateSession = req.getSession();
-
-		invalidateSession.invalidate();
-
 		String userName = req.getParameter("userName");
 
 		String password = req.getParameter("password");
