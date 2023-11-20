@@ -5,8 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>新規登録画面</title>
+<link rel="stylesheet" href="./css/register.css">
 </head>
 <body>
+	<div class="registerPage">
+	
 	<h1>新規登録画面</h1>
 
 	<form action="register" method="post">
@@ -19,7 +22,8 @@
 		<input name="password" type="password" required>
 		<br>
 		
-		<input type="submit" value="新規登録">
+		<input type="submit" value="新規登録" class="registerBtn">
 	</form>
+	</div>
 </body>
 </html>

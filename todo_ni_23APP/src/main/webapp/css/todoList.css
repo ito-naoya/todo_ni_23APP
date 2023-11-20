@@ -60,3 +60,31 @@ h2 {
 	border-radius: 10px;
 	cursor: pointer;
 }
+
+
+.registerBtn{
+	background-color: limegreen;
+	color: white;
+	border: solid 1px;
+	border-radius: 10px;
+	margin-bottom: 20px;
+	cursor: pointer;
+}
+
+.loginBtn{
+	background-color: dodgerblue;
+	color: white;
+	border: solid 1px;
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+.topPage{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-top: 200px;
+	text-align: center;
+	
+}

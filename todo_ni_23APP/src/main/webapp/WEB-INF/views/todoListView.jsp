@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.*"%>
 <%@ page import="model.Todo"%>
-<%@ page import="model.User" %>
+<%@ page import="model.User"%>
 
 <!DOCTYPE html>
 <html>
@@ -24,7 +24,7 @@
 	<div class="todoList">
 
 		<h1 class="todoHeader">
-			<%= user.getUserName() %>さんのとぅどぅ
+			<%=user.getUserName()%>さんのとぅどぅ
 		</h1>
 
 		<%
@@ -105,17 +105,20 @@
 
 		<h1>ログイン画面</h1>
 
+
 		<form action="login" method="post">
 
 			<label for="userName">ユーザ名</label> <input type="text" name="userName">
 			<br> <label for="password">パスワード</label> <input type="password"
-				name="password"> <br> <input type="submit" value="ログイン">
-
+				name="password"> <br> <input type="submit" value="ログイン"
+				class="loginBtn">
 		</form>
 
 		<form action="register" method="get">
-			<input type="submit" value="新規登録">
+			<input type="submit" value="新規登録" class="registerBtn">
 		</form>
+
+
 
 	</div>
 
