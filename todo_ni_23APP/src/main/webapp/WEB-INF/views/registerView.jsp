@@ -12,11 +12,11 @@
 	<form action="register" method="post">
 	
 		<label for="userName">ユーザー名</label> 
-		<input name="userName" type="text">
+		<input name="userName" type="text" required>
 		<br>
 		
 		<label for="password">パスワード</label> 
-		<input name="password" type="password">
+		<input name="password" type="password" required>
 		<br>
 		
 		<input type="submit" value="新規登録">

@@ -10,6 +10,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import model.TodoModel;
+import model.User;
 
 @WebServlet("/todoCreate")
 public class TodoCreateController extends HttpServlet {
@@ -24,7 +25,7 @@ public class TodoCreateController extends HttpServlet {
 		
 		HttpSession session = req.getSession();
 		
-		int user_id = (int)session.getAttribute("userId");
+		User user = (User)session.getAttribute("user");
 
 		String title = req.getParameter("title");
 		
@@ -34,7 +35,7 @@ public class TodoCreateController extends HttpServlet {
 
 		TodoModel todoModel = new TodoModel();
 
-		int createNum = todoModel.insert(title, priority, content, user_id);
+		int createNum = todoModel.insert(title, priority, content, user.getUserId());
 
 		req.setAttribute("createMessage", createNum + "件のデータを追加しました。");
 

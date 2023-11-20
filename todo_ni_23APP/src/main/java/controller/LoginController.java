@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import model.User;
 import model.UserModel;
 
 @WebServlet("/login")
@@ -44,11 +45,9 @@ public class LoginController extends HttpServlet {
 
 		HttpSession session = req.getSession();
 
-		String usrName = (String) session.getAttribute("userName");
+		User user = (User) session.getAttribute("user");
 
-		Integer userId = (Integer) session.getAttribute("userId");
-
-		if (usrName != null && userId != null) {
+		if (user != null) {
 
 			res.sendRedirect("todoList");
 

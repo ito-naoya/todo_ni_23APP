@@ -2,7 +2,7 @@ package model;
 
 public class User {
 
-	private int userId;
+	private Integer userId;
 	private String userName;
 	private String password;
 
@@ -14,7 +14,7 @@ public class User {
 		this.password = hashedPassword;
 	}
 
-	public int getUserId() {
+	public Integer getUserId() {
 		return userId;
 	}
 

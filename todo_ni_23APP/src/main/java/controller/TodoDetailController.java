@@ -10,6 +10,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import model.TodoModel;
+import model.User;
 
 @WebServlet("/todoDetail")
 public class TodoDetailController extends HttpServlet {
@@ -24,9 +25,9 @@ public class TodoDetailController extends HttpServlet {
 		
 		HttpSession session = req.getSession();
 		
-		Integer userId = (Integer)session.getAttribute("userId");
+		User user = (User)session.getAttribute("user");
 		
-		if(userId == null) {
+		if(user == null) {
 			
 			res.sendRedirect("login");
 			

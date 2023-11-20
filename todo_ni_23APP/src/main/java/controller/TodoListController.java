@@ -10,6 +10,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import model.TodoModel;
+import model.User;
 
 @WebServlet("/todoList")
 public class TodoListController extends HttpServlet {
@@ -25,48 +26,42 @@ public class TodoListController extends HttpServlet {
 
 		HttpSession session = req.getSession();
 
-		Integer userId = (Integer) session.getAttribute("userId");
-		String userName = (String)session.getAttribute("userName");
-		
-		req.setAttribute("userId", userId);
-		req.setAttribute("userName", userName);
+		User user = (User) session.getAttribute("user");
 
 		String sort = req.getParameter("sort");
 
 		TodoModel todoModel = new TodoModel();
 
-		if (userId == null) {
 
-			String view = "/WEB-INF/views/todoListView.jsp";
-			RequestDispatcher dispatcher = req.getRequestDispatcher(view);
-			dispatcher.forward(req, res);
-
-		} else {
+		if(user != null) {
+			
+			req.setAttribute("user", user);
 
 			if (sort == null) {
 
-				req.setAttribute("todoList", todoModel.selectAll(userId));
+				req.setAttribute("todoList", todoModel.selectAll(user.getUserId()));
 
 			} else if (sort != null && sort.equals("asc") || sort.equals("desc")) {
 
-				req.setAttribute("todoList", todoModel.orderByDateTime(userId, sort));
+				req.setAttribute("todoList", todoModel.orderByDateTime(user.getUserId(), sort));
 
 			} else if (sort != null && sort.equals("high") || sort.equals("normal") || sort.equals("low")) {
 
-				req.setAttribute("todoList", todoModel.sortByPriority(userId, sort));
+				req.setAttribute("todoList", todoModel.sortByPriority(user.getUserId(), sort));
 
 			} else {
 
-				req.setAttribute("todoList", todoModel.selectAll(userId));
-				
+				req.setAttribute("todoList", todoModel.selectAll(user.getUserId()));
+
 			}
 
-			String view = "/WEB-INF/views/todoListView.jsp";
-			RequestDispatcher dispatcher = req.getRequestDispatcher(view);
-			dispatcher.forward(req, res);
 
 		}
 
+		String view = "/WEB-INF/views/todoListView.jsp";
+		RequestDispatcher dispatcher = req.getRequestDispatcher(view);
+		dispatcher.forward(req, res);
+		
 	}
 
 }

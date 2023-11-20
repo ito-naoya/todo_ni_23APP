@@ -32,9 +32,8 @@ public class UserModel {
 				
 				HttpSession session = req.getSession();
 				
-				session.setAttribute("userName", user.getUserName());
-				
-				session.setAttribute("userId", user.getUserId());
+				session.setAttribute("user", user);
+			
 				
 			}
 			
