@@ -22,14 +22,19 @@ public class TodoNewController extends HttpServlet {
 			throws ServletException, IOException {
 		
 		HttpSession session = req.getSession();
+		
 		Integer userId = (Integer)session.getAttribute("userId");
 		
 		if(userId == null) {
+			
 			res.sendRedirect("login");
+			
 		}else {			
+			
 			String view = "/WEB-INF/views/todoNewView.jsp";
 			RequestDispatcher dispatcher = req.getRequestDispatcher(view);
 			dispatcher.forward(req, res);
+			
 		}
 
 

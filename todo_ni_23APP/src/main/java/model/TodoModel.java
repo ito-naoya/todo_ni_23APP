@@ -11,10 +11,15 @@ public class TodoModel {
 	TodoDao todoDao = new TodoDao();
 
 	private static String getNowDate() {
+		
 		Date nowDateTime = new Date();
+		
 		SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy年MM月dd日");
+		
 		String formatNowDate = sdf2.format(nowDateTime);
+		
 		return formatNowDate;
+		
 	}
 
 	public ArrayList<Todo> selectAll(Integer userId) {
@@ -28,6 +33,7 @@ public class TodoModel {
 	public int insert(String title, String priority, String content, int user_id) {
 
 		String nowDateTime = getNowDate();
+		
 		Todo todo = new Todo(title, nowDateTime, priority, content, user_id);
 
 		return todoDao.insert(todo);
@@ -37,11 +43,15 @@ public class TodoModel {
 	public int update(int todoId, String title, String priority, String content) {
 
 		Todo todo = todoDao.select(todoId);
+		
 		String nowDate = getNowDate();
 
 		todo.setTitle(title);
+		
 		todo.setDateTime(nowDate);
+		
 		todo.setPriority(priority);
+		
 		todo.setContent(content);
 
 		return todoDao.update(todo);

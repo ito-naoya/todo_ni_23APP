@@ -23,10 +23,13 @@ public class TodoDetailController extends HttpServlet {
 			throws ServletException, IOException {
 		
 		HttpSession session = req.getSession();
+		
 		Integer userId = (Integer)session.getAttribute("userId");
 		
 		if(userId == null) {
+			
 			res.sendRedirect("login");
+			
 		}else {
 			
 			int todoId = Integer.parseInt(req.getParameter("id"));

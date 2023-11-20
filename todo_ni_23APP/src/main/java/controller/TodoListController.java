@@ -23,7 +23,9 @@ public class TodoListController extends HttpServlet {
 			throws ServletException, IOException {
 
 		HttpSession session = req.getSession();
+		
 		Integer userId = (Integer) session.getAttribute("userId");
+		
 		String sort = req.getParameter("sort");
 
 		TodoModel todoModel = new TodoModel();

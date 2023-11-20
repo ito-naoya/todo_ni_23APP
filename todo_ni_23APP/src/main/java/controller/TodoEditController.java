@@ -23,6 +23,7 @@ public class TodoEditController extends HttpServlet {
 			throws ServletException, IOException {
 		
 		HttpSession session = req.getSession();
+		
 		Integer userId = (Integer)session.getAttribute("userId");
 		
 		if(userId == null) {

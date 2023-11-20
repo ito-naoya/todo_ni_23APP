@@ -23,7 +23,6 @@ public class LoginController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException {
 		
-
 		String view = "/WEB-INF/views/loginView.jsp";
 		RequestDispatcher dispatcher = req.getRequestDispatcher(view);
 		dispatcher.forward(req, res);
@@ -34,6 +33,7 @@ public class LoginController extends HttpServlet {
 			throws ServletException, IOException {
 		
 		HttpSession invalidateSession = req.getSession();
+		
 		invalidateSession.invalidate();
 
 		String userName = req.getParameter("userName");
@@ -44,6 +44,7 @@ public class LoginController extends HttpServlet {
 		userModel.login(req, userName, password);
 
 		HttpSession session = req.getSession();
+		
 		String usrName = (String) session.getAttribute("userName");
 
 		if (usrName != null) {

@@ -30,9 +30,11 @@ public class RegisterController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		
 		String userName = req.getParameter("userName");
+		
 		String password = req.getParameter("password");
 		
 		UserModel userModel = new UserModel();
+		
 		int registerNum = userModel.insert(userName, password);
 		
 		req.setAttribute("registerMessage", registerNum + "件のアカウントを新規登録しました。");

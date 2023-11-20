@@ -31,10 +31,13 @@ public class UserModel {
 			if (user != null) {
 				
 				HttpSession session = req.getSession();
+				
 				session.setAttribute("userName", user.getUserName());
+				
 				session.setAttribute("userId", user.getUserId());
 				
 			}
+			
 		}
 
 	}
@@ -43,18 +46,29 @@ public class UserModel {
 	public int insert(String userName, String password) {
 		
 		String hashedPassword = "";
-		try {
-			hashedPassword = HashGenerator.generateHash(password);
-		} catch (NoSuchAlgorithmException e) {
-			e.printStackTrace();
-		}
 		
+		try {
+			
+			hashedPassword = HashGenerator.generateHash(password);
+			
+		} catch (NoSuchAlgorithmException e) {
+			
+			e.printStackTrace();
+			
+		}
+	
 		User user = new User();
-		if(hashedPassword != "" && hashedPassword != password) {			
+		
+		if(hashedPassword != "" && hashedPassword != password) {	
+			
 			user.setUserName(userName);
+			
 			user.setPassword(hashedPassword);
+			
 		}
 		
 		return accountDao.insert(user);
+		
 	}
+	
 }

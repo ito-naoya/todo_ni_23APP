@@ -23,6 +23,7 @@ public class TodoDeleteController extends HttpServlet {
 			throws ServletException, IOException {
 
 		HttpSession session = req.getSession();
+		
 		Integer userId = (Integer) session.getAttribute("userId");
 
 		if (userId == null) {

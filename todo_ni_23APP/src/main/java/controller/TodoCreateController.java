@@ -23,10 +23,13 @@ public class TodoCreateController extends HttpServlet {
 			throws ServletException, IOException {
 		
 		HttpSession session = req.getSession();
+		
 		int user_id = (int)session.getAttribute("userId");
 
 		String title = req.getParameter("title");
+		
 		String content = req.getParameter("content");
+		
 		String priority = req.getParameter("priority");
 
 		TodoModel todoModel = new TodoModel();

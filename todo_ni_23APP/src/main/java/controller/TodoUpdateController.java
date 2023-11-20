@@ -22,8 +22,11 @@ public class TodoUpdateController extends HttpServlet {
 			throws ServletException, IOException {
 
 		int todoId = Integer.parseInt(req.getParameter("id"));
+		
 		String title = req.getParameter("title");
+		
 		String priority = req.getParameter("priority");
+		
 		String content = req.getParameter("content");
 		
 		TodoModel todoModel = new TodoModel();

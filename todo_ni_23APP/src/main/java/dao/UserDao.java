@@ -17,11 +17,14 @@ public class UserDao{
 
 	public User login(String name, String password) {
 
-
 		try {
+			
 			Class.forName(DB_JDBC_DRIVER);
+			
 		} catch (Exception e) {
+			
 			e.printStackTrace();
+			
 		}
 
 		String sql = "SELECT * FROM users WHERE userName = ? AND password = ?";
@@ -32,7 +35,9 @@ public class UserDao{
 				PreparedStatement statement = connection.prepareStatement(sql);) {
 
 			statement.setString(1, name);
+			
 			statement.setString(2, password);
+			
 			ResultSet result = statement.executeQuery();
 
 			while (result.next()) {
@@ -40,9 +45,11 @@ public class UserDao{
 				user = new User();
 
 				int userId = result.getInt("id");
+				
 				String userName = result.getString("userName");
 				
 				user.setUserId(userId);
+				
 				user.setUserName(userName);
 			}
 			
@@ -59,9 +66,13 @@ public class UserDao{
 	public int  insert(User user) {
 		
 		try {
+			
 			Class.forName(DB_JDBC_DRIVER);
+			
 		} catch (Exception e) {
+			
 			e.printStackTrace();
+			
 		}
 
 		String sql = "INSERT INTO users (userName, password) VALUES(?, ?)";
@@ -70,6 +81,7 @@ public class UserDao{
 				PreparedStatement statement = connection.prepareStatement(sql);) {
 
 			statement.setString(1, user.getUserName());
+			
 			statement.setString(2, user.getPassword());
 			
 			return statement.executeUpdate();

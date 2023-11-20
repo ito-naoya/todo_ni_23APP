@@ -21,14 +21,6 @@ public class Todo {
 		this.user_Id = user_id;
 	}
 
-	public int getUser_Id() {
-		return user_Id;
-	}
-
-	public void setUser_Id(int user_Id) {
-		this.user_Id = user_Id;
-	}
-
 	public Todo(String title, String dateTime, String priority, String content, int user_id) {
 		this.title = title;
 		this.dateTime = dateTime;
@@ -36,7 +28,7 @@ public class Todo {
 		this.content = content;
 		this.user_Id = user_id;
 	}
-
+	
 	public int getTodoId() {
 		return todoId;
 	}
@@ -76,5 +68,14 @@ public class Todo {
 	public void setPriority(String priority) {
 		this.priority = priority;
 	}
+	
+	public int getUser_Id() {
+		return user_Id;
+	}
+	
+	public void setUser_Id(int user_Id) {
+		this.user_Id = user_Id;
+	}
+
 
 }
