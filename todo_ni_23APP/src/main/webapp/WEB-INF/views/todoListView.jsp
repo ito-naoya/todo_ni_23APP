@@ -114,7 +114,7 @@
 			<input type="text" name="userName">
 			<br> 
 			<label for="password">パスワード</label>
-			<input type="password"　name="password">
+			<input type="password" name="password">
 			<br> 
 			<input type="submit" value="ログイン">
 				
