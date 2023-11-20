@@ -8,9 +8,9 @@
 </head>
 <body>
 
-<%String registerMessage = (String)request.getAttribute("registerMessage"); %>
+<h1>アカウント新規登録完了</h1>
 
-<h1><%= registerMessage %></h1>
+<p><%= request.getAttribute("registerMessage") %></p>
 
 <a href="login">戻る</a>
 
