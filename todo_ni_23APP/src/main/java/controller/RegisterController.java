@@ -14,13 +14,11 @@ import model.UserModel;
 public class RegisterController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-
     public RegisterController() {
         super();
         
     }
 
-	
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		
 		String view = "/WEB-INF/views/registerView.jsp";
@@ -44,6 +42,5 @@ public class RegisterController extends HttpServlet {
 		dispatcher.forward(req, res);
 		
 	}
-
 
 }

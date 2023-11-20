@@ -12,19 +12,18 @@ import jakarta.servlet.http.HttpSession;
 @WebServlet("/logout")
 public class LogoutController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    
-    public LogoutController() {
-        super();
-        
-    }
+
+	public LogoutController() {
+		super();
+
+	}
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		
+
 		HttpSession session = req.getSession();
 		session.invalidate();
-        res.sendRedirect("login");
-		
+		res.sendRedirect("login");
+
 	}
 
 }
