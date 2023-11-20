@@ -37,6 +37,7 @@ public class LoginController extends HttpServlet {
 		invalidateSession.invalidate();
 
 		String userName = req.getParameter("userName");
+		
 		String password = req.getParameter("password");
 
 		UserModel userModel = new UserModel();
