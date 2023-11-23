@@ -23,9 +23,7 @@
 
 	<div class="todoList">
 
-		<h1 class="todoHeader">
-			<%=user.getUserName()%>さんのとぅどぅ
-		</h1>
+		<h1 class="todoHeader">${user.getUserName()}さんのとぅどぅ</h1>
 
 		<%
 		ArrayList<Todo> todoList = (ArrayList<Todo>) request.getAttribute("todoList");
@@ -34,9 +32,15 @@
 		<table class="todoTable">
 			<thead>
 				<tr>
-					<th><h2>date</h2></th>
-					<th><h2>text</h2></th>
-					<th><h2>priority</h2></th>
+					<th>
+						<h2>date</h2>
+					</th>
+					<th>
+						<h2>text</h2>
+					</th>
+					<th>
+						<h2>priority</h2>
+					</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -48,7 +52,8 @@
 				<tr>
 					<td class="todoDateTime"><%=todo.getDateTime()%></td>
 					<td class="todoText"><a
-						href="todoDetail?id=<%=todo.getTodoId()%>"><%=todo.getTitle()%></a></td>
+						href="todoDetail?id=<%=todo.getTodoId()%>"> <%=todo.getTitle()%>
+					</a></td>
 					<td class="todoPriority"><%=todo.getPriority()%></td>
 				</tr>
 
@@ -60,8 +65,12 @@
 		</table>
 
 		<div class="newTodo">
-			<a href="todoNew"><button class="newBtn">新規登録</button></a> <a
-				href="logout"><button class="logoutBtn">ログアウト</button></a>
+			<a href="todoNew">
+				<button class="newBtn">新規登録</button>
+			</a> <a href="logout">
+				<button class="logoutBtn">ログアウト</button>
+			</a>
+
 		</div>
 
 		<%
@@ -85,7 +94,10 @@
 
 			<form action="todoList" method="GET">
 
-				<button type="submit" class="sortBtn"><%=entry.getValue()%></button>
+				<button type="submit" class="sortBtn">
+					<%=entry.getValue()%>
+				</button>
+
 				<input type="hidden" value="<%=entry.getKey()%>" name="sort">
 
 			</form>
@@ -108,17 +120,18 @@
 
 		<form action="login" method="post">
 
-			<label for="userName">ユーザ名</label> <input type="text" name="userName">
-			<br> <label for="password">パスワード</label> <input type="password"
-				name="password"> <br> <input type="submit" value="ログイン"
-				class="loginBtn">
+			<label for="userName"> ユーザ名 </label> <input type="text"
+				name="userName"> <br> <label for="password">
+				パスワード </label> <input type="password" name="password"> <br> <input
+				type="submit" value="ログイン" class="loginBtn">
+
 		</form>
 
 		<form action="register" method="get">
+
 			<input type="submit" value="新規登録" class="registerBtn">
+
 		</form>
-
-
 
 	</div>
 

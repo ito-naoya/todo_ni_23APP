@@ -24,6 +24,7 @@
 		
 		<input type="submit" value="新規登録" class="registerBtn">
 	</form>
+	<a href="login">戻る</a>
 	</div>
 </body>
 </html>
